@@ -952,8 +952,8 @@
             border: 1px solid var(--glass-border);
             border-radius: 24px;
             padding: 40px;
-            width: 800px;
-            max-width: 90vw;
+            width: 900px;
+            max-width: 95vw;
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: var(--shadow-primary), var(--shadow-glow);
@@ -977,6 +977,40 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        .timeline-tabs {
+            display: flex;
+            gap: 8px;
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 4px;
+        }
+
+        .timeline-tab {
+            padding: 12px 20px;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .timeline-tab.active {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .timeline-section {
+            display: none;
+        }
+
+        .timeline-section.active {
+            display: block;
         }
 
         .timeline-list {
@@ -1034,6 +1068,170 @@
         .timeline-actions {
             display: flex;
             gap: 8px;
+        }
+
+        /* Daily Plan Styles */
+        .daily-plan-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .daily-plan-timeline {
+            background: rgba(21, 21, 32, 0.3);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        [data-theme="light"] .daily-plan-timeline {
+            background: rgba(248, 250, 252, 0.3);
+        }
+
+        .daily-plan-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 16px 20px;
+            background: rgba(21, 21, 32, 0.6);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        [data-theme="light"] .daily-plan-item {
+            background: rgba(248, 250, 252, 0.6);
+        }
+
+        .daily-plan-item:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--accent-primary);
+        }
+
+        .daily-plan-item.completed {
+            opacity: 0.6;
+        }
+
+        .daily-plan-item.completed .plan-task-title {
+            text-decoration: line-through;
+        }
+
+        .plan-time-slot {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 160px;
+        }
+
+        .plan-time-display {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--accent-primary);
+            font-weight: 700;
+            min-width: 120px;
+        }
+
+        .plan-task-content {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .plan-task-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .plan-task-icon.alarm { background: linear-gradient(135deg, #ff6b35, #ff4444); }
+        .plan-task-icon.gym { background: linear-gradient(135deg, #4a90e2, #357abd); }
+        .plan-task-icon.meal { background: linear-gradient(135deg, #ff8c42, #ff6b35); }
+        .plan-task-icon.work { background: linear-gradient(135deg, #6c5ce7, #a29bfe); }
+        .plan-task-icon.family { background: linear-gradient(135deg, #fd79a8, #e84393); }
+        .plan-task-icon.personal { background: linear-gradient(135deg, #00b894, #00a085); }
+        .plan-task-icon.sleep { background: linear-gradient(135deg, #636e72, #2d3436); }
+        .plan-task-icon.other { background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); }
+
+        .plan-task-details {
+            flex-grow: 1;
+        }
+
+        .plan-task-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .plan-task-duration {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .plan-task-notes {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        .plan-actions {
+            display: flex;
+            gap: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .daily-plan-item:hover .plan-actions {
+            opacity: 1;
+        }
+
+        .daily-plan-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 16px 20px;
+            background: rgba(21, 21, 32, 0.4);
+            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        [data-theme="light"] .daily-plan-controls {
+            background: rgba(248, 250, 252, 0.4);
+        }
+
+        .plan-templates {
+            display: flex;
+            gap: 12px;
+        }
+
+        .template-btn {
+            padding: 8px 16px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .template-btn:hover {
+            background: var(--accent-primary);
+            color: white;
+            border-color: var(--accent-primary);
         }
 
         .add-event-prompt {
@@ -1340,6 +1538,22 @@
                 left: 20px;
                 text-align: center;
             }
+
+            .timeline-tabs {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .plan-templates {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .daily-plan-controls {
+                flex-direction: column;
+                gap: 16px;
+                align-items: stretch;
+            }
         }
 
         /* Custom scrollbar */
@@ -1449,7 +1663,6 @@
         <div class="completed-section" id="completedSection">
             <div class="completed-header">Completed Events</div>
             <div class="completed-list" id="completedList">
-
                 <!-- Completed items will be rendered here -->
             </div>
         </div>
@@ -1516,15 +1729,95 @@
         <div class="timeline-content">
             <div class="timeline-header">
                 <h2 class="timeline-title" id="timelineTitle">Timeline for May 31, 2025</h2>
+                <div class="timeline-tabs">
+                    <button class="timeline-tab active" id="eventsTab">Scheduled Events</button>
+                    <button class="timeline-tab" id="planTab">Daily Plan</button>
+                </div>
                 <button class="close-btn" id="closeTimelineBtn">×</button>
             </div>
-            <div class="timeline-list" id="timelineList">
-                <!-- Timeline items will be rendered here -->
+            
+            <!-- Events Section -->
+            <div class="timeline-section active" id="eventsSection">
+                <div class="timeline-list" id="timelineList">
+                    <!-- Timeline items will be rendered here -->
+                </div>
+                <div class="add-event-prompt">
+                    <p>Click below to add an event for this day</p>
+                    <button class="add-event-btn" id="addEventFromTimeline">+ Add Event</button>
+                </div>
             </div>
-            <div class="add-event-prompt">
-                <p>Click below to add an event for this day</p>
-                <button class="add-event-btn" id="addEventFromTimeline">+ Add Event</button>
+            
+            <!-- Daily Plan Section -->
+            <div class="timeline-section" id="planSection">
+                <div class="daily-plan-container">
+                    <div class="daily-plan-controls">
+                        <div class="plan-templates">
+                            <button class="template-btn" onclick="loadTemplate('workday')">Work Day</button>
+                            <button class="template-btn" onclick="loadTemplate('weekend')">Weekend</button>
+                            <button class="template-btn" onclick="loadTemplate('travel')">Travel Day</button>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary" id="addPlanItemBtn">+ Add Task</button>
+                            <button class="btn" onclick="clearDailyPlan()">Clear All</button>
+                        </div>
+                    </div>
+                    <div class="daily-plan-timeline" id="dailyPlanTimeline">
+                        <!-- Daily plan items will be rendered here -->
+                    </div>
+                </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Plan Item Modal -->
+    <div class="modal" id="planItemModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="planModalTitle">Add Daily Plan Task</h2>
+                <button class="close-btn" id="closePlanModalBtn">×</button>
+            </div>
+            <form id="planItemForm">
+                <input type="hidden" id="planItemId">
+                
+                <div class="form-group">
+                    <label class="form-label" for="planTaskTitle">Task Title</label>
+                    <input type="text" class="form-input" id="planTaskTitle" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="planTaskCategory">Category</label>
+                    <select class="form-input form-select" id="planTaskCategory" required>
+                        <option value="alarm">🔔 Alarm/Wake Up</option>
+                        <option value="gym">🏋️ Exercise/Gym</option>
+                        <option value="meal">🍽️ Meal</option>
+                        <option value="work">💼 Work</option>
+                        <option value="family">👨‍👩‍👧‍👦 Family Time</option>
+                        <option value="personal">🧘 Personal/Self Care</option>
+                        <option value="sleep">😴 Sleep</option>
+                        <option value="other">📋 Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="planStartTime">Start Time</label>
+                    <input type="time" class="form-input" id="planStartTime" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="planEndTime">End Time</label>
+                    <input type="time" class="form-input" id="planEndTime" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="planTaskNotes">Notes (optional)</label>
+                    <textarea class="form-input form-textarea" id="planTaskNotes" rows="2"></textarea>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn" id="cancelPlanBtn">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="savePlanBtn">Save</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -1534,11 +1827,14 @@
     <script>
         // Global variables
         const STORAGE_KEY = 'phillips4cast-data';
+        const DAILY_PLAN_KEY = 'phillips4cast-daily-plans';
         let items = [];
         let completedItems = [];
+        let dailyPlans = {};
         let currentMonth = new Date();
         let selectedDate = null;
         let searchQuery = '';
+        let currentPlanDate = null;
         
         // Sample data matching your JSON structure
         const sampleData = {
@@ -1631,6 +1927,7 @@
 
         function init() {
             loadData();
+            loadDailyPlans();
             setupEventListeners();
             initTheme();
             initCompletedVisibility();
@@ -1653,6 +1950,28 @@
                 console.error('Error loading data:', error);
                 items = sampleData.active;
                 completedItems = [];
+            }
+        }
+
+        function loadDailyPlans() {
+            try {
+                const stored = localStorage.getItem(DAILY_PLAN_KEY);
+                if (stored) {
+                    dailyPlans = JSON.parse(stored);
+                } else {
+                    dailyPlans = {};
+                }
+            } catch (error) {
+                console.error('Error loading daily plans:', error);
+                dailyPlans = {};
+            }
+        }
+
+        function saveDailyPlans() {
+            try {
+                localStorage.setItem(DAILY_PLAN_KEY, JSON.stringify(dailyPlans));
+            } catch (error) {
+                console.error('Error saving daily plans:', error);
             }
         }
 
@@ -1732,6 +2051,16 @@
                 openAddModalForDate(selectedDate);
             });
 
+            // Timeline tabs
+            document.getElementById('eventsTab').addEventListener('click', () => switchTab('events'));
+            document.getElementById('planTab').addEventListener('click', () => switchTab('plan'));
+
+            // Plan item modal
+            document.getElementById('addPlanItemBtn').addEventListener('click', openAddPlanModal);
+            document.getElementById('closePlanModalBtn').addEventListener('click', closePlanModal);
+            document.getElementById('cancelPlanBtn').addEventListener('click', closePlanModal);
+            document.getElementById('savePlanBtn').addEventListener('click', savePlanItem);
+
             // Click outside modal to close
             document.getElementById('itemModal').addEventListener('click', (e) => {
                 if (e.target.id === 'itemModal') closeModal();
@@ -1741,11 +2070,16 @@
                 if (e.target.id === 'timelineModal') closeTimelineModal();
             });
 
+            document.getElementById('planItemModal').addEventListener('click', (e) => {
+                if (e.target.id === 'planItemModal') closePlanModal();
+            });
+
             // ESC key to close modals
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeModal();
                     closeTimelineModal();
+                    closePlanModal();
                 }
             });
         }
@@ -1925,12 +2259,36 @@
 
         function showDayTimeline(dateStr) {
             selectedDate = dateStr;
+            currentPlanDate = dateStr;
             const date = new Date(dateStr + 'T00:00:00');
             const dayEvents = getEventsForDate(dateStr);
             
             document.getElementById('timelineTitle').textContent = 
                 `Timeline for ${date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}`;
             
+            // Switch to events tab by default
+            switchTab('events');
+            
+            // Render events
+            renderTimelineEvents(dayEvents);
+            
+            // Render daily plan
+            renderDailyPlan(dateStr);
+            
+            document.getElementById('timelineModal').style.display = 'flex';
+        }
+
+        function switchTab(tab) {
+            // Update tab buttons
+            document.querySelectorAll('.timeline-tab').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tab + 'Tab').classList.add('active');
+            
+            // Update sections
+            document.querySelectorAll('.timeline-section').forEach(section => section.classList.remove('active'));
+            document.getElementById(tab + 'Section').classList.add('active');
+        }
+
+        function renderTimelineEvents(dayEvents) {
             const timelineList = document.getElementById('timelineList');
             
             if (dayEvents.length === 0) {
@@ -1958,8 +2316,219 @@
                     </div>
                 `).join('');
             }
+        }
+
+        function renderDailyPlan(dateStr) {
+            const planTimeline = document.getElementById('dailyPlanTimeline');
+            const dayPlan = dailyPlans[dateStr] || [];
             
-            document.getElementById('timelineModal').style.display = 'flex';
+            if (dayPlan.length === 0) {
+                planTimeline.innerHTML = `
+                    <div class="add-event-prompt">
+                        <p>No daily plan created for this day</p>
+                        <p style="margin-top: 8px; font-size: 14px;">Use templates above or add individual tasks to create your ideal schedule</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Sort by start time
+            const sortedPlan = [...dayPlan].sort((a, b) => a.startTime.localeCompare(b.startTime));
+            
+            planTimeline.innerHTML = sortedPlan.map(task => {
+                const duration = calculateDuration(task.startTime, task.endTime);
+                const icon = getTaskIcon(task.category);
+                
+                return `
+                    <div class="daily-plan-item ${task.completed ? 'completed' : ''}">
+                        <div class="plan-time-slot">
+                            <div class="plan-time-display">${formatTime(task.startTime)} - ${formatTime(task.endTime)}</div>
+                        </div>
+                        <div class="plan-task-content">
+                            <div class="plan-task-icon ${task.category}">${icon}</div>
+                            <div class="plan-task-details">
+                                <div class="plan-task-title">${task.title}</div>
+                                <div class="plan-task-duration">${duration}</div>
+                                ${task.notes ? `<div class="plan-task-notes">${task.notes}</div>` : ''}
+                            </div>
+                        </div>
+                        <div class="plan-actions">
+                            <button class="action-btn" onclick="togglePlanComplete(${task.id})" title="Mark Complete">✓</button>
+                            <button class="action-btn" onclick="editPlanItem(${task.id})" title="Edit">✏️</button>
+                            <button class="action-btn" onclick="deletePlanItem(${task.id})" title="Delete">🗑️</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function getTaskIcon(category) {
+            const icons = {
+                'alarm': '⏰',
+                'gym': '🏋️',
+                'meal': '🍽️',
+                'work': '💼',
+                'family': '👨‍👩‍👧‍👦',
+                'personal': '🧘',
+                'sleep': '😴',
+                'other': '📋'
+            };
+            return icons[category] || '📋';
+        }
+
+        function calculateDuration(startTime, endTime) {
+            const [startHour, startMin] = startTime.split(':').map(Number);
+            const [endHour, endMin] = endTime.split(':').map(Number);
+            
+            const startMinutes = startHour * 60 + startMin;
+            const endMinutes = endHour * 60 + endMin;
+            
+            let durationMinutes = endMinutes - startMinutes;
+            if (durationMinutes < 0) durationMinutes += 24 * 60; // Handle overnight
+            
+            const hours = Math.floor(durationMinutes / 60);
+            const minutes = durationMinutes % 60;
+            
+            if (hours === 0) return `${minutes} min`;
+            if (minutes === 0) return `${hours} hr`;
+            return `${hours} hr, ${minutes} min`;
+        }
+
+        function openAddPlanModal() {
+            document.getElementById('planModalTitle').textContent = 'Add Daily Plan Task';
+            document.getElementById('planItemForm').reset();
+            document.getElementById('planItemId').value = '';
+            document.getElementById('planItemModal').style.display = 'flex';
+        }
+
+        function editPlanItem(id) {
+            const dayPlan = dailyPlans[currentPlanDate] || [];
+            const task = dayPlan.find(t => t.id === id);
+            if (!task) return;
+
+            document.getElementById('planModalTitle').textContent = 'Edit Daily Plan Task';
+            document.getElementById('planItemId').value = task.id;
+            document.getElementById('planTaskTitle').value = task.title;
+            document.getElementById('planTaskCategory').value = task.category;
+            document.getElementById('planStartTime').value = task.startTime;
+            document.getElementById('planEndTime').value = task.endTime;
+            document.getElementById('planTaskNotes').value = task.notes || '';
+            
+            document.getElementById('planItemModal').style.display = 'flex';
+        }
+
+        function savePlanItem() {
+            const id = document.getElementById('planItemId').value;
+            const title = document.getElementById('planTaskTitle').value.trim();
+            const category = document.getElementById('planTaskCategory').value;
+            const startTime = document.getElementById('planStartTime').value;
+            const endTime = document.getElementById('planEndTime').value;
+            const notes = document.getElementById('planTaskNotes').value.trim();
+            
+            if (!title || !startTime || !endTime) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            const task = {
+                id: id ? parseInt(id) : Date.now(),
+                title,
+                category,
+                startTime,
+                endTime,
+                notes,
+                completed: false
+            };
+            
+            if (!dailyPlans[currentPlanDate]) {
+                dailyPlans[currentPlanDate] = [];
+            }
+            
+            if (id) {
+                const index = dailyPlans[currentPlanDate].findIndex(t => t.id == id);
+                if (index !== -1) {
+                    dailyPlans[currentPlanDate][index] = task;
+                }
+            } else {
+                dailyPlans[currentPlanDate].push(task);
+            }
+            
+            saveDailyPlans();
+            renderDailyPlan(currentPlanDate);
+            closePlanModal();
+            showNotification('Daily plan task saved!');
+        }
+
+        function togglePlanComplete(id) {
+            const dayPlan = dailyPlans[currentPlanDate] || [];
+            const task = dayPlan.find(t => t.id === id);
+            if (task) {
+                task.completed = !task.completed;
+                saveDailyPlans();
+                renderDailyPlan(currentPlanDate);
+            }
+        }
+
+        function deletePlanItem(id) {
+            if (confirm('Are you sure you want to delete this plan item?')) {
+                const dayPlan = dailyPlans[currentPlanDate] || [];
+                dailyPlans[currentPlanDate] = dayPlan.filter(t => t.id !== id);
+                saveDailyPlans();
+                renderDailyPlan(currentPlanDate);
+                showNotification('Plan item deleted');
+            }
+        }
+
+        function clearDailyPlan() {
+            if (confirm('Are you sure you want to clear the entire daily plan for this day?')) {
+                dailyPlans[currentPlanDate] = [];
+                saveDailyPlans();
+                renderDailyPlan(currentPlanDate);
+                showNotification('Daily plan cleared');
+            }
+        }
+
+        function loadTemplate(templateType) {
+            if (!currentPlanDate) return;
+            
+            const templates = {
+                'workday': [
+                    { title: 'Rise and Shine', category: 'alarm', startTime: '05:00', endTime: '05:30', notes: 'Reflect on the respite.' },
+                    { title: 'Gym', category: 'gym', startTime: '05:30', endTime: '06:15', notes: '' },
+                    { title: 'Lunch', category: 'meal', startTime: '11:45', endTime: '12:45', notes: '' },
+                    { title: 'Family Time', category: 'family', startTime: '18:00', endTime: '19:30', notes: '' }
+                ],
+                'weekend': [
+                    { title: 'Sleep In', category: 'sleep', startTime: '07:00', endTime: '08:00', notes: '' },
+                    { title: 'Family Breakfast', category: 'meal', startTime: '08:30', endTime: '09:30', notes: '' },
+                    { title: 'Personal Projects', category: 'personal', startTime: '10:00', endTime: '12:00', notes: '' },
+                    { title: 'Family Activities', category: 'family', startTime: '14:00', endTime: '17:00', notes: '' }
+                ],
+                'travel': [
+                    { title: 'Pack & Prepare', category: 'other', startTime: '06:00', endTime: '07:00', notes: '' },
+                    { title: 'Travel to Airport', category: 'other', startTime: '07:00', endTime: '08:30', notes: '' },
+                    { title: 'Flight', category: 'other', startTime: '10:00', endTime: '13:00', notes: '' },
+                    { title: 'Hotel Check-in', category: 'other', startTime: '15:00', endTime: '16:00', notes: '' }
+                ]
+            };
+            
+            const template = templates[templateType];
+            if (!template) return;
+            
+            if (confirm(`Load ${templateType} template? This will replace any existing plan for this day.`)) {
+                dailyPlans[currentPlanDate] = template.map((task, index) => ({
+                    ...task,
+                    id: Date.now() + index,
+                    completed: false
+                }));
+                saveDailyPlans();
+                renderDailyPlan(currentPlanDate);
+                showNotification(`${templateType.charAt(0).toUpperCase() + templateType.slice(1)} template loaded!`);
+            }
+        }
+
+        function closePlanModal() {
+            document.getElementById('planItemModal').style.display = 'none';
         }
 
         function closeTimelineModal() {
