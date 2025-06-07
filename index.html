@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,211 +12,521 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f0f8ff 0%, #e8f4f8 100%);
-            color: #2c5530;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
+```
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f0f8ff 0%, #e8f4f8 100%);
+        color: #2c5530;
+        line-height: 1.6;
+        min-height: 100vh;
+    }
 
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 30px;
+        background: linear-gradient(135deg, #4a90a4 0%, #357a8a 100%);
+        border-radius: 15px;
+        color: white;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .header p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+
+    .tabs {
+        display: flex;
+        background: white;
+        border-radius: 15px 15px 0 0;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        overflow: hidden;
+        margin-bottom: 0;
+    }
+
+    .tab {
+        flex: 1;
+        padding: 20px;
+        text-align: center;
+        background: linear-gradient(135deg, #e8f4f8 0%, #f0f8ff 100%);
+        cursor: pointer;
+        border: none;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #2c5530;
+        transition: all 0.3s ease;
+        border-right: 1px solid #ddd;
+    }
+
+    .tab:last-child {
+        border-right: none;
+    }
+
+    .tab.active {
+        background: linear-gradient(135deg, #4a90a4 0%, #357a8a 100%);
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .tab:hover:not(.active) {
+        background: linear-gradient(135deg, #5ba3b8 0%, #4a90a4 100%);
+        color: white;
+    }
+
+    .tab-content {
+        display: none;
+        background: white;
+        border-radius: 0 0 15px 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        padding: 20px;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    .progress-container {
+        background: linear-gradient(135deg, #f8fffe 0%, #e8f4f8 100%);
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 30px;
+        border: 2px solid #5ba3b8;
+        text-align: center;
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 20px;
+        background: #e0e0e0;
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 10px 0;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #4a90a4, #5ba3b8);
+        width: 0%;
+        transition: width 0.3s ease;
+        border-radius: 10px;
+    }
+
+    .category {
+        background: white;
+        border-radius: 15px;
+        margin: 20px 0;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        overflow: hidden;
+        border: 2px solid #e8f4f8;
+    }
+
+    .category-header {
+        background: linear-gradient(135deg, #5ba3b8 0%, #4a90a4 100%);
+        color: white;
+        padding: 20px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .category-emoji {
+        font-size: 1.8rem;
+    }
+
+    .items-container {
+        padding: 20px;
+    }
+
+    .item {
+        display: flex;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #f0f8ff;
+        transition: all 0.2s ease;
+    }
+
+    .item:last-child {
+        border-bottom: none;
+    }
+
+    .item:hover {
+        background: #f8fffe;
+        padding-left: 10px;
+    }
+
+    .item.checked {
+        opacity: 0.6;
+    }
+
+    .item.checked .item-text {
+        text-decoration: line-through;
+        color: #888;
+    }
+
+    .checkbox {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #4a90a4;
+        border-radius: 4px;
+        margin-right: 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+    }
+
+    .checkbox:hover {
+        background: #f0f8ff;
+        transform: scale(1.1);
+    }
+
+    .checkbox.checked {
+        background: #4a90a4;
+        border-color: #4a90a4;
+    }
+
+    .checkbox.checked::after {
+        content: '✓';
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .item-text {
+        flex: 1;
+        font-size: 1rem;
+        color: #2c5530;
+    }
+
+    .special-note {
+        background: linear-gradient(135deg, #ffd700 0%, #ffed4a 100%);
+        color: #8b4513;
+        padding: 15px;
+        border-radius: 10px;
+        margin: 15px 0;
+        font-weight: bold;
+        border-left: 4px solid #ff8c00;
+    }
+
+    .stats {
+        display: flex;
+        justify-content: space-around;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .stat {
+        text-align: center;
+        padding: 15px;
+        background: linear-gradient(135deg, #e8f4f8 0%, #f0f8ff 100%);
+        border-radius: 10px;
+        flex: 1;
+        border: 2px solid #5ba3b8;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #4a90a4;
+    }
+
+    .stat-label {
+        color: #2c5530;
+        font-size: 0.9rem;
+        margin-top: 5px;
+    }
+
+    .person-section {
+        background: linear-gradient(135deg, #f0f8ff 0%, #e8f4f8 100%);
+        border-radius: 10px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #4a90a4;
+    }
+
+    .person-header {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #2c5530;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .grocery-note {
+        background: linear-gradient(135deg, #e8f8e8 0%, #f0fff0 100%);
+        color: #2d5016;
+        padding: 10px;
+        border-radius: 8px;
+        margin: 10px 0;
+        font-size: 0.9rem;
+        border-left: 3px solid #4caf50;
+    }
+
+    .kids-tab-content {
+        background: linear-gradient(135deg, #87ceeb 0%, #98fb98 50%, #ffb6c1 100%);
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    .kids-header {
+        text-align: center;
+        margin-bottom: 20px;
+        padding: 25px;
+        background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 50%, #45b7d1 100%);
+        border-radius: 20px;
+        color: white;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        border: 4px solid #fff;
+    }
+
+    .kids-header h2 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        animation: bounce 2s infinite;
+    }
+
+    .kids-header p {
+        font-size: 1.3rem;
+        opacity: 0.95;
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-10px); }
+        60% { transform: translateY(-5px); }
+    }
+
+    .kids-progress {
+        background: linear-gradient(135deg, #fff 0%, #f0f8ff 100%);
+        border-radius: 20px;
+        padding: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        border: 4px solid #ff6b6b;
+        text-align: center;
+    }
+
+    .kids-progress h3 {
+        font-size: 1.8rem;
+        color: #ff6b6b;
+        margin-bottom: 15px;
+    }
+
+    .kids-category {
+        background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+        border-radius: 25px;
+        margin: 25px 0;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        overflow: hidden;
+        border: 4px solid #4ecdc4;
+    }
+
+    .kids-category-header {
+        background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+        color: white;
+        padding: 20px;
+        font-size: 1.8rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .kids-category-emoji {
+        font-size: 2.5rem;
+        animation: wiggle 1s ease-in-out infinite;
+    }
+
+    @keyframes wiggle {
+        0%, 7% { transform: rotateZ(0); }
+        15% { transform: rotateZ(-15deg); }
+        20% { transform: rotateZ(10deg); }
+        25% { transform: rotateZ(-10deg); }
+        30% { transform: rotateZ(6deg); }
+        35% { transform: rotateZ(-4deg); }
+        40%, 100% { transform: rotateZ(0); }
+    }
+
+    .kids-items-container {
+        padding: 25px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 20px;
+    }
+
+    .kids-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        background: linear-gradient(135deg, #fff 0%, #f0f8ff 100%);
+        border: 3px solid #e0e0e0;
+        position: relative;
+        min-height: 140px;
+        justify-content: center;
+    }
+
+    .kids-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        border-color: #ff6b6b;
+    }
+
+    .kids-item.checked {
+        background: linear-gradient(135deg, #4caf50 0%, #8bc34a 100%);
+        border-color: #4caf50;
+        transform: scale(0.95);
+    }
+
+    .kids-item.checked::after {
+        content: '✅';
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        font-size: 2rem;
+        animation: checkmark 0.5s ease-in-out;
+    }
+
+    @keyframes checkmark {
+        0% { transform: scale(0) rotate(0deg); }
+        50% { transform: scale(1.2) rotate(180deg); }
+        100% { transform: scale(1) rotate(360deg); }
+    }
+
+    .kids-item-emoji {
+        font-size: 3.5rem;
+        margin-bottom: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .kids-item.checked .kids-item-emoji {
+        filter: brightness(1.2);
+        transform: scale(1.1);
+    }
+
+    .kids-item-label {
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: #2c5530;
+        text-align: center;
+        margin-top: 5px;
+    }
+
+    .kids-item.checked .kids-item-label {
+        color: #fff;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+
+    .kids-special-note {
+        background: linear-gradient(135deg, #ffd54f 0%, #ffcc02 100%);
+        color: #8b4513;
+        padding: 20px;
+        border-radius: 20px;
+        margin: 20px;
+        font-weight: bold;
+        font-size: 1.2rem;
+        text-align: center;
+        border: 3px solid #ff9800;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .kids-grocery-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+    }
+
+    .kids-grocery-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        border-radius: 15px;
+        background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+        border: 2px solid #ff9800;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-height: 100px;
+        justify-content: center;
+        position: relative;
+    }
+
+    .kids-grocery-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .kids-grocery-item.checked {
+        background: linear-gradient(135deg, #4caf50 0%, #8bc34a 100%);
+        border-color: #4caf50;
+    }
+
+    .kids-grocery-item.checked::after {
+        content: '✅';
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        font-size: 1.5rem;
+    }
+
+    .kids-grocery-item.checked .kids-item-label {
+        color: #fff;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
         .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
+            padding: 10px;
         }
-
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 30px;
-            background: linear-gradient(135deg, #4a90a4 0%, #357a8a 100%);
-            border-radius: 15px;
-            color: white;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-
+        
         .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 2rem;
+        }
+        
+        .stats {
+            flex-direction: column;
+            gap: 10px;
         }
 
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        .tabs {
+            flex-direction: column;
         }
 
-        .progress-container {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            text-align: center;
+        .tab {
+            border-right: none;
+            border-bottom: 1px solid #ddd;
         }
 
-        .progress-bar {
-            width: 100%;
-            height: 20px;
-            background: #e0e0e0;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 10px 0;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #4a90a4, #5ba3b8);
-            width: 0%;
-            transition: width 0.3s ease;
-            border-radius: 10px;
-        }
-
-        .category {
-            background: white;
-            border-radius: 15px;
-            margin: 20px 0;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-            overflow: hidden;
-            border: 2px solid #e8f4f8;
-        }
-
-        .category-header {
-            background: linear-gradient(135deg, #5ba3b8 0%, #4a90a4 100%);
-            color: white;
-            padding: 20px;
-            font-size: 1.4rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .category-emoji {
-            font-size: 1.8rem;
-        }
-
-        .items-container {
-            padding: 20px;
-        }
-
-        .item {
-            display: flex;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #f0f8ff;
-            transition: all 0.2s ease;
-        }
-
-        .item:last-child {
+        .tab:last-child {
             border-bottom: none;
         }
+    }
+</style>
+```
 
-        .item:hover {
-            background: #f8fffe;
-            padding-left: 10px;
-        }
-
-        .item.checked {
-            opacity: 0.6;
-        }
-
-        .item.checked .item-text {
-            text-decoration: line-through;
-            color: #888;
-        }
-
-        .checkbox {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #4a90a4;
-            border-radius: 4px;
-            margin-right: 15px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-            flex-shrink: 0;
-        }
-
-        .checkbox:hover {
-            background: #f0f8ff;
-            transform: scale(1.1);
-        }
-
-        .checkbox.checked {
-            background: #4a90a4;
-            border-color: #4a90a4;
-        }
-
-        .checkbox.checked::after {
-            content: '✓';
-            color: white;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .item-text {
-            flex: 1;
-            font-size: 1rem;
-            color: #2c5530;
-        }
-
-        .special-note {
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4a 100%);
-            color: #8b4513;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-            font-weight: bold;
-            border-left: 4px solid #ff8c00;
-        }
-
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .stat {
-            text-align: center;
-            padding: 15px;
-            background: linear-gradient(135deg, #e8f4f8 0%, #f0f8ff 100%);
-            border-radius: 10px;
-            flex: 1;
-            border: 2px solid #5ba3b8;
-        }
-
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #4a90a4;
-        }
-
-        .stat-label {
-            color: #2c5530;
-            font-size: 0.9rem;
-            margin-top: 5px;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .stats {
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
-    </style>
 </head>
 <body>
     <div class="container">
@@ -224,22 +535,30 @@
             <p>June 9-13, 2025 • Port Aransas, Texas</p>
         </div>
 
+```
+    <div class="tabs">
+        <button class="tab active" data-tab="my-list">My List</button>
+        <button class="tab" data-tab="family-list">Family List</button>
+        <button class="tab" data-tab="kids-list">Kids Helper 🎉</button>
+    </div>
+
+    <div id="my-list" class="tab-content active">
         <div class="progress-container">
-            <h3>Packing Progress</h3>
+            <h3>My Packing Progress</h3>
             <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
+                <div class="progress-fill" id="myProgressFill"></div>
             </div>
             <div class="stats">
                 <div class="stat">
-                    <div class="stat-number" id="packedCount">0</div>
+                    <div class="stat-number" id="myPackedCount">0</div>
                     <div class="stat-label">Packed</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-number" id="totalCount">0</div>
+                    <div class="stat-number" id="myTotalCount">0</div>
                     <div class="stat-label">Total Items</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-number" id="percentPacked">0%</div>
+                    <div class="stat-number" id="myPercentPacked">0%</div>
                     <div class="stat-label">Complete</div>
                 </div>
             </div>
@@ -552,48 +871,828 @@
         </div>
     </div>
 
-    <script>
-        // Initialize the checklist functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const checkboxes = document.querySelectorAll('.checkbox');
-            const items = document.querySelectorAll('.item');
+    <div id="family-list" class="tab-content">
+        <div class="progress-container">
+            <h3>Family Packing Progress</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="familyProgressFill"></div>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number" id="familyPackedCount">0</div>
+                    <div class="stat-label">Packed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="familyTotalCount">0</div>
+                    <div class="stat-label">Total Items</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="familyPercentPacked">0%</div>
+                    <div class="stat-label">Complete</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <span class="category-emoji">👶</span>
+                <span>H (Little One)</span>
+            </div>
+            <div class="items-container">
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">5 sets of PJ's</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Hat</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Socks x5</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Shorts x5</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Pants x2</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Sunglasses</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Toothbrushes & toothpaste</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Floaties</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Bottles x2</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Bedtime diapers, pull ups, wipes, & swim diapers</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Pacifiers</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Tennis shoes & pool shoes</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Bathing suits</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Bedtime water</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Goggles</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <span class="category-emoji">👧</span>
+                <span>R (Daughter)</span>
+            </div>
+            <div class="items-container">
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Socks x5</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">5 sets of PJ's</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Hat</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Leggings x2</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Skirts x3</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Sunglasses</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">10 pairs of panties</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Toothbrushes & toothpaste</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Bike shorts x2</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Jean shorts x1</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Dresses x6</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Pony tails, brush</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Floaties</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Tennis shoes & pool shoes</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Goggles</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Bedtime water</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <span class="category-emoji">👩</span>
+                <span>L & A (Mom & Adult)</span>
+            </div>
+            <div class="items-container">
+                <div class="person-section">
+                    <div class="person-header">👩 L's Items</div>
+                    <div class="item">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Pool shoes</div>
+                    </div>
+                    <div class="item">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Toothbrushes & toothpaste</div>
+                    </div>
+                    <div class="item">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Hat x2</div>
+                    </div>
+                    <div class="item">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Phone charger, WHOOP charger, laptop charger</div>
+                    </div>
+                </div>
+                
+                <div class="person-section">
+                    <div class="person-header">👤 A's Items</div>
+                    <div class="item">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Socks x3</div>
+                    </div>
+                    <div class="item">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Toothbrushes & toothpaste</div>
+                    </div>
+                    <div class="item">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Hat x2</div>
+                    </div>
+                    <div class="item">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Sunglasses</div>
+                    </div>
+                    <div class="item">
+                        <div class="checkbox"></div>
+                        <div class="item-text">10 pairs of panties</div>
+                    </div>
+                    <div class="item">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Phone charger, watch charger, laptop/iPad charger</div>
+                    </div>
+                    <div class="item">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Tampons</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <span class="category-emoji">🧴</span>
+                <span>Shared Items & Toiletries</span>
+            </div>
+            <div class="items-container">
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Travel shampoo and conditioner for all</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Sunscreen (RH)</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Sunscreen (AL)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <span class="category-emoji">🏠</span>
+                <span>House & Equipment</span>
+            </div>
+            <div class="items-container">
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Beach chairs x2</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Pack & play with sheets</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Tiny pillows for all</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Sound machine</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Beats pill speaker & charger</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Beach toys</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Goggles</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">T.P.</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Raincoats</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Cooler</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Kraft cheese</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <span class="category-emoji">🛒</span>
+                <span>Groceries</span>
+            </div>
+            <div class="items-container">
+                <div class="grocery-note">FOC = First Day On Coast</div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Whole milk (FOC)</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Wipes & pull ups (FOC)</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Popcorn (FOC)</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Veggie Chips & Veggie Straws per R request (FOC)</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Bananas (FOC)</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Pouches (FOC)</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Chocolate milk (FOC)</div>
+                </div>
+                
+                <div class="grocery-note">BOC = Buy On Coast</div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Cookies or muffins? (BOC)</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Mac & Cheese (BOC)</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Chips (BOC)</div>
+                </div>
+                <div class="item">
+                    <div class="checkbox"></div>
+                    <div class="item-text">Bottles of water (BOC)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="kids-list" class="tab-content kids-tab-content">
+        <div class="kids-header">
+            <h2>🏖️ Kids Packing Helper! 🎉</h2>
+            <p>Help Mommy and Daddy pack for the beach! 🌊</p>
+        </div>
+
+        <div class="kids-progress">
+            <h3>🌟 How much have we packed? 🌟</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="kidsProgressFill"></div>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number" id="kidsPackedCount">0</div>
+                    <div class="stat-label">✅ Done!</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="kidsTotalCount">0</div>
+                    <div class="stat-label">📦 Total</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="kidsPercentPacked">0%</div>
+                    <div class="stat-label">🎯 Finished</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="kids-category">
+            <div class="kids-category-header">
+                <span class="kids-category-emoji">👶</span>
+                <span>Baby H's Things</span>
+            </div>
+            <div class="kids-items-container">
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🌙</div>
+                    <div class="kids-item-label">PJs</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">👒</div>
+                    <div class="kids-item-label">Hat</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🧦</div>
+                    <div class="kids-item-label">Socks</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🩳</div>
+                    <div class="kids-item-label">Shorts</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">👖</div>
+                    <div class="kids-item-label">Pants</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🕶️</div>
+                    <div class="kids-item-label">Sunglasses</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🦷</div>
+                    <div class="kids-item-label">Toothbrush</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🏊‍♂️</div>
+                    <div class="kids-item-label">Floaties</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🍼</div>
+                    <div class="kids-item-label">Bottles</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">👶</div>
+                    <div class="kids-item-label">Diapers</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🍼</div>
+                    <div class="kids-item-label">Pacifiers</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">👟</div>
+                    <div class="kids-item-label">Shoes</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">👙</div>
+                    <div class="kids-item-label">Swimsuit</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">💧</div>
+                    <div class="kids-item-label">Water</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🥽</div>
+                    <div class="kids-item-label">Goggles</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="kids-category">
+            <div class="kids-category-header">
+                <span class="kids-category-emoji">👧</span>
+                <span>Sister R's Things</span>
+            </div>
+            <div class="kids-items-container">
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🧦</div>
+                    <div class="kids-item-label">Socks</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🌙</div>
+                    <div class="kids-item-label">PJs</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">👒</div>
+                    <div class="kids-item-label">Hat</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">👖</div>
+                    <div class="kids-item-label">Leggings</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">👗</div>
+                    <div class="kids-item-label">Skirts</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🕶️</div>
+                    <div class="kids-item-label">Sunglasses</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🩲</div>
+                    <div class="kids-item-label">Underwear</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🦷</div>
+                    <div class="kids-item-label">Toothbrush</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🩳</div>
+                    <div class="kids-item-label">Bike Shorts</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">👖</div>
+                    <div class="kids-item-label">Jean Shorts</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">👗</div>
+                    <div class="kids-item-label">Dresses</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">💇‍♀️</div>
+                    <div class="kids-item-label">Hair Stuff</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🏊‍♀️</div>
+                    <div class="kids-item-label">Floaties</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">👟</div>
+                    <div class="kids-item-label">Shoes</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🥽</div>
+                    <div class="kids-item-label">Goggles</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">💧</div>
+                    <div class="kids-item-label">Water</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="kids-category">
+            <div class="kids-category-header">
+                <span class="kids-category-emoji">👩</span>
+                <span>Mommy & Grown-ups</span>
+            </div>
+            <div class="kids-items-container">
+                <div class="kids-item">
+                    <div class="kids-item-emoji">👡</div>
+                    <div class="kids-item-label">Pool Shoes</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🦷</div>
+                    <div class="kids-item-label">Toothbrush</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">👒</div>
+                    <div class="kids-item-label">Hats</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🔌</div>
+                    <div class="kids-item-label">Chargers</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🧦</div>
+                    <div class="kids-item-label">Socks</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🕶️</div>
+                    <div class="kids-item-label">Sunglasses</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🩲</div>
+                    <div class="kids-item-label">Underwear</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">📱</div>
+                    <div class="kids-item-label">Phone Stuff</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="kids-category">
+            <div class="kids-category-header">
+                <span class="kids-category-emoji">🧴</span>
+                <span>Bath & Clean Stuff</span>
+            </div>
+            <div class="kids-items-container">
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🧴</div>
+                    <div class="kids-item-label">Shampoo</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🧴</div>
+                    <div class="kids-item-label">Conditioner</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🧴</div>
+                    <div class="kids-item-label">Sunscreen</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="kids-category">
+            <div class="kids-category-header">
+                <span class="kids-category-emoji">🏠</span>
+                <span>Big Things for Beach House</span>
+            </div>
+            <div class="kids-items-container">
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🪑</div>
+                    <div class="kids-item-label">Beach Chairs</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🛏️</div>
+                    <div class="kids-item-label">Pack & Play</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🛌</div>
+                    <div class="kids-item-label">Pillows</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🔊</div>
+                    <div class="kids-item-label">Sound Machine</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🎵</div>
+                    <div class="kids-item-label">Speaker</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🏖️</div>
+                    <div class="kids-item-label">Beach Toys</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🥽</div>
+                    <div class="kids-item-label">More Goggles</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🧻</div>
+                    <div class="kids-item-label">Toilet Paper</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🧥</div>
+                    <div class="kids-item-label">Raincoats</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🧊</div>
+                    <div class="kids-item-label">Cooler</div>
+                </div>
+                <div class="kids-item">
+                    <div class="kids-item-emoji">🧀</div>
+                    <div class="kids-item-label">Cheese</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="kids-category">
+            <div class="kids-category-header">
+                <span class="kids-category-emoji">🛒</span>
+                <span>Yummy Food to Buy!</span>
+            </div>
+            <div class="kids-special-note">
+                🥛 Things to buy before we go to the beach! 🍌
+            </div>
+            <div class="kids-grocery-section">
+                <div class="kids-grocery-item">
+                    <div class="kids-item-emoji">🥛</div>
+                    <div class="kids-item-label">Milk</div>
+                </div>
+                <div class="kids-grocery-item">
+                    <div class="kids-item-emoji">👶</div>
+                    <div class="kids-item-label">Wipes</div>
+                </div>
+                <div class="kids-grocery-item">
+                    <div class="kids-item-emoji">🍿</div>
+                    <div class="kids-item-label">Popcorn</div>
+                </div>
+                <div class="kids-grocery-item">
+                    <div class="kids-item-emoji">🥕</div>
+                    <div class="kids-item-label">Veggie Chips</div>
+                </div>
+                <div class="kids-grocery-item">
+                    <div class="kids-item-emoji">🍌</div>
+                    <div class="kids-item-label">Bananas</div>
+                </div>
+                <div class="kids-grocery-item">
+                    <div class="kids-item-emoji">🍎</div>
+                    <div class="kids-item-label">Pouches</div>
+                </div>
+                <div class="kids-grocery-item">
+                    <div class="kids-item-emoji">🍫</div>
+                    <div class="kids-item-label">Chocolate Milk</div>
+                </div>
+            </div>
             
-            // Add click handlers to all checkboxes
-            checkboxes.forEach((checkbox, index) => {
-                checkbox.addEventListener('click', function() {
-                    const item = items[index];
-                    
-                    // Toggle checked state
-                    if (checkbox.classList.contains('checked')) {
-                        checkbox.classList.remove('checked');
-                        item.classList.remove('checked');
-                    } else {
-                        checkbox.classList.add('checked');
-                        item.classList.add('checked');
-                    }
-                    
-                    updateProgress();
-                });
+            <div class="kids-special-note">
+                🏖️ Things to buy when we get to the beach! 🌊
+            </div>
+            <div class="kids-grocery-section">
+                <div class="kids-grocery-item">
+                    <div class="kids-item-emoji">🍪</div>
+                    <div class="kids-item-label">Cookies</div>
+                </div>
+                <div class="kids-grocery-item">
+                    <div class="kids-item-emoji">🧀</div>
+                    <div class="kids-item-label">Mac & Cheese</div>
+                </div>
+                <div class="kids-grocery-item">
+                    <div class="kids-item-emoji">🥔</div>
+                    <div class="kids-item-label">Chips</div>
+                </div>
+                <div class="kids-grocery-item">
+                    <div class="kids-item-emoji">💧</div>
+                    <div class="kids-item-label">Water Bottles</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Tab switching functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const targetTab = this.getAttribute('data-tab');
+                
+                // Remove active class from all tabs and content
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(tc => tc.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                this.classList.add('active');
+                document.getElementById(targetTab).classList.add('active');
+                
+                // Update progress for the active tab
+                updateProgress();
             });
-            
-            // Update progress display
-            function updateProgress() {
-                const totalItems = checkboxes.length;
-                const checkedItems = document.querySelectorAll('.checkbox.checked').length;
-                const percentage = Math.round((checkedItems / totalItems) * 100);
-                
-                // Update progress bar
-                document.getElementById('progressFill').style.width = percentage + '%';
-                
-                // Update stats
-                document.getElementById('packedCount').textContent = checkedItems;
-                document.getElementById('totalCount').textContent = totalItems;
-                document.getElementById('percentPacked').textContent = percentage + '%';
-            }
-            
-            // Initialize progress on page load
-            updateProgress();
         });
-    </script>
+        
+        // Initialize checklist functionality for all tabs
+        const allCheckboxes = document.querySelectorAll('.checkbox');
+        const allItems = document.querySelectorAll('.item');
+        const kidsItems = document.querySelectorAll('.kids-item, .kids-grocery-item');
+        
+        // Add click handlers to regular checkboxes
+        allCheckboxes.forEach((checkbox, index) => {
+            checkbox.addEventListener('click', function() {
+                const item = allItems[index];
+                
+                // Toggle checked state
+                if (checkbox.classList.contains('checked')) {
+                    checkbox.classList.remove('checked');
+                    item.classList.remove('checked');
+                } else {
+                    checkbox.classList.add('checked');
+                    item.classList.add('checked');
+                }
+                
+                updateProgress();
+            });
+        });
+
+        // Add click handlers to kids items
+        kidsItems.forEach((item) => {
+            item.addEventListener('click', function() {
+                // Toggle checked state with fun animation
+                if (item.classList.contains('checked')) {
+                    item.classList.remove('checked');
+                } else {
+                    item.classList.add('checked');
+                    // Add a little celebration animation
+                    item.style.transform = 'scale(1.2)';
+                    setTimeout(() => {
+                        item.style.transform = '';
+                    }, 200);
+                }
+                
+                updateProgress();
+            });
+        });
+        
+        // Update progress display
+        function updateProgress() {
+            const activeTab = document.querySelector('.tab.active').getAttribute('data-tab');
+            
+            if (activeTab === 'kids-list') {
+                // Kids tab progress
+                const kidsActiveItems = document.querySelectorAll('.kids-item, .kids-grocery-item');
+                const kidsCheckedItems = document.querySelectorAll('.kids-item.checked, .kids-grocery-item.checked');
+                
+                const totalItems = kidsActiveItems.length;
+                const packedItems = kidsCheckedItems.length;
+                const percentage = totalItems > 0 ? Math.round((packedItems / totalItems) * 100) : 0;
+                
+                document.getElementById('kidsProgressFill').style.width = percentage + '%';
+                document.getElementById('kidsPackedCount').textContent = packedItems;
+                document.getElementById('kidsTotalCount').textContent = totalItems;
+                document.getElementById('kidsPercentPacked').textContent = percentage + '%';
+                
+                // Celebration when everything is done!
+                if (percentage === 100 && packedItems > 0) {
+                    setTimeout(() => {
+                        alert('🎉 WOW! Great job helping pack! 🎉\n\nYou checked everything! Time for the beach! 🏖️');
+                    }, 500);
+                }
+            } else {
+                // Regular tabs progress
+                const activeContent = document.getElementById(activeTab);
+                const checkboxes = activeContent.querySelectorAll('.checkbox');
+                const checkedItems = activeContent.querySelectorAll('.checkbox.checked');
+                
+                const totalItems = checkboxes.length;
+                const packedItems = checkedItems.length;
+                const percentage = totalItems > 0 ? Math.round((packedItems / totalItems) * 100) : 0;
+                
+                // Update progress bar and stats based on active tab
+                if (activeTab === 'my-list') {
+                    document.getElementById('myProgressFill').style.width = percentage + '%';
+                    document.getElementById('myPackedCount').textContent = packedItems;
+                    document.getElementById('myTotalCount').textContent = totalItems;
+                    document.getElementById('myPercentPacked').textContent = percentage + '%';
+                } else if (activeTab === 'family-list') {
+                    document.getElementById('familyProgressFill').style.width = percentage + '%';
+                    document.getElementById('familyPackedCount').textContent = packedItems;
+                    document.getElementById('familyTotalCount').textContent = totalItems;
+                    document.getElementById('familyPercentPacked').textContent = percentage + '%';
+                }
+            }
+        }
+        
+        // Initialize progress on page load
+        updateProgress();
+    });
+</script>
+```
+
 </body>
 </html>
