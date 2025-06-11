@@ -1,1698 +1,2254 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinnamon Shores Packing List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Phillips4Cast">
+    <meta name="theme-color" content="#6366f1">
+    <title>Phillips4Cast</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            /* Dark theme variables (current) */
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #151520;
+            --bg-tertiary: #1e1e2e;
+            --bg-accent: #252530;
+            --accent-primary: #6366f1;
+            --accent-secondary: #a855f7;
+            --accent-tertiary: #06b6d4;
+            --accent-warm: #f59e0b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            --border-subtle: #334155;
+            --border-accent: #475569;
+            --glass-bg: rgba(21, 21, 32, 0.6);
+            --glass-border: rgba(99, 102, 241, 0.2);
+            --shadow-primary: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            --shadow-accent: 0 20px 50px rgba(99, 102, 241, 0.3);
+            --shadow-glow: 0 0 50px rgba(99, 102, 241, 0.1);
+            
+            /* Category Colors */
+            --category-appointments: #06b6d4;
+            --category-events: #ef4444;
+            --category-deadlines: #f59e0b;
+            --category-reminders: #a855f7;
+            --category-trips: #10b981;
+        }
+
+        [data-theme="light"] {
+            /* Light theme variables */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --bg-accent: #e2e8f0;
+            --accent-primary: #6366f1;
+            --accent-secondary: #a855f7;
+            --accent-tertiary: #06b6d4;
+            --accent-warm: #f59e0b;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --border-subtle: #e2e8f0;
+            --border-accent: #cbd5e1;
+            --glass-bg: rgba(248, 250, 252, 0.8);
+            --glass-border: rgb(126, 141, 124);
+            --shadow-primary: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            --shadow-accent: 0 20px 50px rgba(99, 102, 241, 0.15);
+            --shadow-glow: 0 0 50px rgba(99, 102, 241, 0.05);
+            
+            /* Category Colors for light mode */
+            --category-appointments: #0891b2;
+            --category-events: #dc2626;
+            --category-deadlines: #d97706;
+            --category-reminders: #9333ea;
+            --category-trips: #059669;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-```
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #f0f8ff 0%, #e8f4f8 100%);
-        color: #2c5530;
-        line-height: 1.6;
-        min-height: 100vh;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        /* Animated cosmic background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(6, 182, 212, 0.08) 0%, transparent 60%),
+                linear-gradient(135deg, var(--bg-primary) 0%, #0f0f1a 50%, var(--bg-primary) 100%);
+            animation: cosmicFlow 30s ease-in-out infinite;
+            z-index: -2;
+        }
+
+        [data-theme="light"] body::before {
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(6, 182, 212, 0.02) 0%, transparent 60%),
+                linear-gradient(135deg, var(--bg-primary) 0%, #f8fafc 50%, var(--bg-primary) 100%);
+        }
+
+        /* Floating particles */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, rgba(99, 102, 241, 0.3), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(168, 85, 247, 0.2), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(6, 182, 212, 0.4), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(245, 158, 11, 0.3), transparent);
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: particleFloat 20s linear infinite;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        [data-theme="light"] body::after {
+            opacity: 0.2;
+        }
+
+        @keyframes cosmicFlow {
+            0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            33% { transform: translate(-20px, -15px) scale(1.1) rotate(1deg); }
+            66% { transform: translate(15px, -10px) scale(0.9) rotate(-1deg); }
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-100px) translateX(50px); }
+            100% { transform: translateY(-200px) translateX(-50px); }
+        }
 
-    .container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-
-    .header {
-        text-align: center;
-        margin-bottom: 30px;
-        padding: 30px;
-        background: linear-gradient(135deg, #4a90a4 0%, #357a8a 100%);
-        border-radius: 15px;
-        color: white;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    }
-
-    .header h1 {
-        font-size: 2.5rem;
-        margin-bottom: 10px;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-
-    .header p {
-        font-size: 1.2rem;
-        opacity: 0.9;
-    }
-
-    .tabs {
-        display: flex;
-        background: white;
-        border-radius: 15px 15px 0 0;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        overflow: hidden;
-        margin-bottom: 0;
-    }
-
-    .tab {
-        flex: 1;
-        padding: 20px;
-        text-align: center;
-        background: linear-gradient(135deg, #e8f4f8 0%, #f0f8ff 100%);
-        cursor: pointer;
-        border: none;
-        font-size: 1.1rem;
-        font-weight: bold;
-        color: #2c5530;
-        transition: all 0.3s ease;
-        border-right: 1px solid #ddd;
-    }
-
-    .tab:last-child {
-        border-right: none;
-    }
-
-    .tab.active {
-        background: linear-gradient(135deg, #4a90a4 0%, #357a8a 100%);
-        color: white;
-        transform: translateY(-2px);
-    }
-
-    .tab:hover:not(.active) {
-        background: linear-gradient(135deg, #5ba3b8 0%, #4a90a4 100%);
-        color: white;
-    }
-
-    .tab-content {
-        display: none;
-        background: white;
-        border-radius: 0 0 15px 15px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        padding: 20px;
-    }
-
-    .tab-content.active {
-        display: block;
-    }
-
-    .progress-container {
-        background: linear-gradient(135deg, #f8fffe 0%, #e8f4f8 100%);
-        border-radius: 10px;
-        padding: 20px;
-        margin-bottom: 30px;
-        border: 2px solid #5ba3b8;
-        text-align: center;
-    }
-
-    .progress-bar {
-        width: 100%;
-        height: 20px;
-        background: #e0e0e0;
-        border-radius: 10px;
-        overflow: hidden;
-        margin: 10px 0;
-    }
-
-    .progress-fill {
-        height: 100%;
-        background: linear-gradient(90deg, #4a90a4, #5ba3b8);
-        width: 0%;
-        transition: width 0.3s ease;
-        border-radius: 10px;
-    }
-
-    .category {
-        background: white;
-        border-radius: 15px;
-        margin: 20px 0;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-        overflow: hidden;
-        border: 2px solid #e8f4f8;
-    }
-
-    .category-header {
-        background: linear-gradient(135deg, #5ba3b8 0%, #4a90a4 100%);
-        color: white;
-        padding: 20px;
-        font-size: 1.4rem;
-        font-weight: bold;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .category-emoji {
-        font-size: 1.8rem;
-    }
-
-    .items-container {
-        padding: 20px;
-    }
-
-    .item {
-        display: flex;
-        align-items: center;
-        padding: 12px 0;
-        border-bottom: 1px solid #f0f8ff;
-        transition: all 0.2s ease;
-    }
-
-    .item:last-child {
-        border-bottom: none;
-    }
-
-    .item:hover {
-        background: #f8fffe;
-        padding-left: 10px;
-    }
-
-    .item.checked {
-        opacity: 0.6;
-    }
-
-    .item.checked .item-text {
-        text-decoration: line-through;
-        color: #888;
-    }
-
-    .checkbox {
-        width: 20px;
-        height: 20px;
-        border: 2px solid #4a90a4;
-        border-radius: 4px;
-        margin-right: 15px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.2s ease;
-        flex-shrink: 0;
-    }
-
-    .checkbox:hover {
-        background: #f0f8ff;
-        transform: scale(1.1);
-    }
-
-    .checkbox.checked {
-        background: #4a90a4;
-        border-color: #4a90a4;
-    }
-
-    .checkbox.checked::after {
-        content: '✓';
-        color: white;
-        font-weight: bold;
-        font-size: 14px;
-    }
-
-    .item-text {
-        flex: 1;
-        font-size: 1rem;
-        color: #2c5530;
-    }
-
-    .special-note {
-        background: linear-gradient(135deg, #ffd700 0%, #ffed4a 100%);
-        color: #8b4513;
-        padding: 15px;
-        border-radius: 10px;
-        margin: 15px 0;
-        font-weight: bold;
-        border-left: 4px solid #ff8c00;
-    }
-
-    .stats {
-        display: flex;
-        justify-content: space-around;
-        gap: 20px;
-        margin-top: 20px;
-    }
-
-    .stat {
-        text-align: center;
-        padding: 15px;
-        background: linear-gradient(135deg, #e8f4f8 0%, #f0f8ff 100%);
-        border-radius: 10px;
-        flex: 1;
-        border: 2px solid #5ba3b8;
-    }
-
-    .stat-number {
-        font-size: 1.8rem;
-        font-weight: bold;
-        color: #4a90a4;
-    }
-
-    .stat-label {
-        color: #2c5530;
-        font-size: 0.9rem;
-        margin-top: 5px;
-    }
-
-    .person-section {
-        background: linear-gradient(135deg, #f0f8ff 0%, #e8f4f8 100%);
-        border-radius: 10px;
-        padding: 15px;
-        margin: 15px 0;
-        border-left: 4px solid #4a90a4;
-    }
-
-    .person-header {
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: #2c5530;
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .grocery-note {
-        background: linear-gradient(135deg, #e8f8e8 0%, #f0fff0 100%);
-        color: #2d5016;
-        padding: 10px;
-        border-radius: 8px;
-        margin: 10px 0;
-        font-size: 0.9rem;
-        border-left: 3px solid #4caf50;
-    }
-
-    .kids-tab-content {
-        background: linear-gradient(135deg, #87ceeb 0%, #98fb98 50%, #ffb6c1 100%);
-        font-family: 'Comic Sans MS', cursive, sans-serif;
-    }
-
-    .kids-header {
-        text-align: center;
-        margin-bottom: 20px;
-        padding: 25px;
-        background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 50%, #45b7d1 100%);
-        border-radius: 20px;
-        color: white;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        border: 4px solid #fff;
-    }
-
-    .kids-header h2 {
-        font-size: 2.5rem;
-        margin-bottom: 10px;
-        text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
-        animation: bounce 2s infinite;
-    }
-
-    .kids-header p {
-        font-size: 1.3rem;
-        opacity: 0.95;
-    }
-
-    @keyframes bounce {
-        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-        40% { transform: translateY(-10px); }
-        60% { transform: translateY(-5px); }
-    }
-
-    .kids-progress {
-        background: linear-gradient(135deg, #fff 0%, #f0f8ff 100%);
-        border-radius: 20px;
-        padding: 25px;
-        margin-bottom: 30px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        border: 4px solid #ff6b6b;
-        text-align: center;
-    }
-
-    .kids-progress h3 {
-        font-size: 1.8rem;
-        color: #ff6b6b;
-        margin-bottom: 15px;
-    }
-
-    .kids-category {
-        background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-        border-radius: 25px;
-        margin: 25px 0;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        overflow: hidden;
-        border: 4px solid #4ecdc4;
-    }
-
-    .kids-category-header {
-        background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
-        color: white;
-        padding: 20px;
-        font-size: 1.8rem;
-        font-weight: bold;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-
-    .kids-category-emoji {
-        font-size: 2.5rem;
-        animation: wiggle 1s ease-in-out infinite;
-    }
-
-    @keyframes wiggle {
-        0%, 7% { transform: rotateZ(0); }
-        15% { transform: rotateZ(-15deg); }
-        20% { transform: rotateZ(10deg); }
-        25% { transform: rotateZ(-10deg); }
-        30% { transform: rotateZ(6deg); }
-        35% { transform: rotateZ(-4deg); }
-        40%, 100% { transform: rotateZ(0); }
-    }
-
-    .kids-items-container {
-        padding: 25px;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        gap: 20px;
-    }
-
-    .kids-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-        border-radius: 20px;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        background: linear-gradient(135deg, #fff 0%, #f0f8ff 100%);
-        border: 3px solid #e0e0e0;
-        position: relative;
-        min-height: 140px;
-        justify-content: center;
-    }
-
-    .kids-item:hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        border-color: #ff6b6b;
-    }
-
-    .kids-item.checked {
-        background: linear-gradient(135deg, #4caf50 0%, #8bc34a 100%);
-        border-color: #4caf50;
-        transform: scale(0.95);
-    }
-
-    .kids-item.checked::after {
-        content: '✅';
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        font-size: 2rem;
-        animation: checkmark 0.5s ease-in-out;
-    }
-
-    @keyframes checkmark {
-        0% { transform: scale(0) rotate(0deg); }
-        50% { transform: scale(1.2) rotate(180deg); }
-        100% { transform: scale(1) rotate(360deg); }
-    }
-
-    .kids-item-emoji {
-        font-size: 3.5rem;
-        margin-bottom: 10px;
-        transition: all 0.3s ease;
-    }
-
-    .kids-item.checked .kids-item-emoji {
-        filter: brightness(1.2);
-        transform: scale(1.1);
-    }
-
-    .kids-item-label {
-        font-size: 0.9rem;
-        font-weight: bold;
-        color: #2c5530;
-        text-align: center;
-        margin-top: 5px;
-    }
-
-    .kids-item.checked .kids-item-label {
-        color: #fff;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-    }
-
-    .kids-special-note {
-        background: linear-gradient(135deg, #ffd54f 0%, #ffcc02 100%);
-        color: #8b4513;
-        padding: 20px;
-        border-radius: 20px;
-        margin: 20px;
-        font-weight: bold;
-        font-size: 1.2rem;
-        text-align: center;
-        border: 3px solid #ff9800;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
-    .kids-grocery-section {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        gap: 15px;
-        margin: 20px 0;
-    }
-
-    .kids-grocery-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 15px;
-        border-radius: 15px;
-        background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
-        border: 2px solid #ff9800;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        min-height: 100px;
-        justify-content: center;
-        position: relative;
-    }
-
-    .kids-grocery-item:hover {
-        transform: scale(1.05);
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
-    .kids-grocery-item.checked {
-        background: linear-gradient(135deg, #4caf50 0%, #8bc34a 100%);
-        border-color: #4caf50;
-    }
-
-    .kids-grocery-item.checked::after {
-        content: '✅';
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        font-size: 1.5rem;
-    }
-
-    .kids-grocery-item.checked .kids-item-label {
-        color: #fff;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-    }
         .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Futuristic header */
+        .header {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 32px;
+            margin-bottom: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-primary), var(--shadow-glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            width: 200px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 22px;
+            color: var(--text-primary);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4);
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 1px;
+        }
+
+        .logo svg {
+            width: 32px;
+            height: 32px;
+            margin-right: 8px;
+            fill: currentColor;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .btn:hover::before {
+            opacity: 0.1;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(99, 102, 241, 0.2);
+            border-color: var(--accent-primary);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            border: none;
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: var(--shadow-accent);
+        }
+
+        /* Ethereal search */
+        .search-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 32px;
+            position: relative;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .search-input {
+            width: 100%;
+            background: rgba(21, 21, 32, 0.8);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 20px 24px;
+            font-size: 16px;
+            color: var(--text-primary);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        [data-theme="light"] .search-input {
+            background: rgba(248, 250, 252, 0.8);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2), inset 0 0 20px rgba(99, 102, 241, 0.05);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* Theme toggle */
+        .view-toggle {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            justify-content: center;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 72px;
+            height: 36px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 18px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 50%;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .toggle-checkbox:checked + .toggle-switch {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: var(--accent-primary);
+        }
+
+        .toggle-checkbox:checked + .toggle-switch::before {
+            transform: translateX(36px);
+        }
+
+        .toggle-checkbox {
+            display: none;
+        }
+
+        .toggle-switch:hover {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Cosmic layout */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+
+        /* Floating calendar */
+        .calendar-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-primary), var(--shadow-glow);
+            position: relative;
+        }
+
+        .calendar-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+            animation: progressGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes progressGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .calendar-header {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            padding: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-subtle);
+            backdrop-filter: blur(20px);
+        }
+
+        .calendar-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .calendar-nav {
+            display: flex;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            width: 48px;
+            height: 48px;
+            background: var(--bg-accent);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 18px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: var(--accent-primary);
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+        }
+
+        .calendar-content {
             padding: 10px;
+            background: rgba(10, 10, 15, 0.3);
         }
-        
-        .header h1 {
-            font-size: 2rem;
+
+        [data-theme="light"] .calendar-content {
+            background: rgba(248, 250, 252, 0.3);
         }
-        
-        .stats {
+
+        .calendar-months {
+            display: grid;
+            gap: 28px;
+        }
+
+        .month-container {
+            background: rgba(21, 21, 32, 0.6);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="light"] .month-container {
+            background: rgba(248, 250, 252, 0.6);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .month-title {
+            background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-accent));
+            padding: 20px;
+            text-align: center;
+            font-weight: 700;
+            color: var(--accent-primary);
+            border-bottom: 1px solid var(--border-subtle);
+            text-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: var(--border-subtle);
+        }
+
+        .day-header {
+            background: var(--bg-tertiary);
+            padding: 16px 8px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .day {
+            background: rgba(21, 21, 32, 0.8);
+            height: 90px;
+            max-height: 90px;
+            padding: 12px 8px;
+            display: flex;
             flex-direction: column;
-            gap: 10px;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            overflow: hidden;
         }
 
-        .tabs {
+        [data-theme="light"] .day {
+            background: rgba(248, 250, 252, 0.8);
+        }
+
+        .day:hover {
+            background: rgba(99, 102, 241, 0.1);
+            transform: scale(1.05);
+            z-index: 10;
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
+            border-radius: 12px;
+        }
+
+        .day.current {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+        }
+
+        .day.other-month {
+            background: rgba(15, 15, 20, 0.5);
+            color: var(--text-muted);
+            opacity: 0.4;
+        }
+
+        [data-theme="light"] .day.other-month {
+            background: rgba(241, 245, 249, 0.5);
+        }
+
+        .day-number {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .day-events {
+            display: flex;
             flex-direction: column;
+            gap: 3px;
+            flex-grow: 1;
+            overflow: hidden;
+            max-height: calc(90px - 30px); /* Total height minus day number and padding */
         }
 
-        .tab {
-            border-right: none;
-            border-bottom: 1px solid #ddd;
+        .day-event {
+            color: white;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-size: 10px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: eventSlide 0.5s ease;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            min-height: 20px;
+            max-height: 20px;
+            flex-shrink: 0;
         }
 
-        .tab:last-child {
-            border-bottom: none;
+        .day-event.appointments {
+            background: linear-gradient(135deg, var(--category-appointments), rgba(6, 182, 212, 0.8));
         }
-    }
-</style>
-```
 
+        .day-event.events {
+            background: linear-gradient(135deg, var(--category-events), rgba(239, 68, 68, 0.8));
+        }
+
+        .day-event.deadlines {
+            background: linear-gradient(135deg, var(--category-deadlines), rgba(245, 158, 11, 0.8));
+        }
+
+        .day-event.reminders {
+            background: linear-gradient(135deg, var(--category-reminders), rgba(168, 85, 247, 0.8));
+        }
+
+        .day-event.trips {
+            background: linear-gradient(135deg, var(--category-trips), rgba(16, 185, 129, 0.8));
+        }
+
+        .day-event.completed {
+            opacity: 0.6;
+            text-decoration: line-through;
+        }
+
+        @keyframes eventSlide {
+            from {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Holographic sidebar */
+        .upcoming-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-primary), var(--shadow-glow);
+            position: sticky;
+            top: 24px;
+            max-height: calc(100vh - 48px);
+        }
+
+        .upcoming-header {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            padding: 28px;
+            border-bottom: 1px solid var(--border-subtle);
+            position: relative;
+        }
+
+        .upcoming-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+        }
+
+        .upcoming-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+        }
+
+        .upcoming-list {
+            padding: 10px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .upcoming-item {
+            background: rgba(21, 21, 32, 0.6);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 4px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            min-height: auto;
+            height: auto;
+        }
+
+        [data-theme="light"] .upcoming-item {
+            background: rgba(248, 250, 252, 0.6);
+        }
+
+        .upcoming-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
+            border-radius: 0 2px 2px 0;
+        }
+
+        .upcoming-item.appointments::before {
+            background: linear-gradient(to bottom, var(--category-appointments), rgba(6, 182, 212, 0.5));
+        }
+
+        .upcoming-item.events::before {
+            background: linear-gradient(to bottom, var(--category-events), rgba(239, 68, 68, 0.5));
+        }
+
+        .upcoming-item.deadlines::before {
+            background: linear-gradient(to bottom, var(--category-deadlines), rgba(245, 158, 11, 0.5));
+        }
+
+        .upcoming-item.reminders::before {
+            background: linear-gradient(to bottom, var(--category-reminders), rgba(168, 85, 247, 0.5));
+        }
+
+        .upcoming-item.trips::before {
+            background: linear-gradient(to bottom, var(--category-trips), rgba(16, 185, 129, 0.5));
+        }
+
+        .upcoming-item:hover {
+            transform: translateX(12px) translateY(-4px);
+            background: rgba(99, 102, 241, 0.1);
+            box-shadow: 0 16px 40px rgba(99, 102, 241, 0.2);
+            border-color: var(--accent-primary);
+        }
+
+        .upcoming-item.overdue::before {
+            background: linear-gradient(to bottom, var(--accent-warm), #ff4444);
+            animation: pulseGlow 2s infinite;
+        }
+
+        .upcoming-item.completed {
+            opacity: 0.6;
+        }
+
+        .upcoming-item.completed .upcoming-title-text {
+            text-decoration: line-through;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 5px rgba(245, 158, 11, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.8); }
+        }
+
+        .upcoming-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            color: var(--accent-primary);
+            font-weight: 700;
+            margin-bottom: 2px;
+            text-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+        }
+
+        .upcoming-title-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .upcoming-details {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.2;
+        }
+
+        /* Neon categories */
+        .categories-section {
+            margin-top: 40px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 28px;
+        }
+
+        .category-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-primary);
+            position: relative;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(99, 102, 241, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .category-card:hover::before {
+            opacity: 1;
+        }
+
+        .category-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2), var(--shadow-glow);
+        }
+
+        .category-header {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            padding: 24px 28px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 14px;
+            border-bottom: 1px solid var(--border-subtle);
+            position: relative;
+        }
+
+        .category-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: currentColor;
+            opacity: 0.5;
+        }
+
+        .category-header.appointments {
+            color: var(--category-appointments);
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+        }
+
+        .category-header.events {
+            color: var(--category-events);
+            text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+        }
+
+        .category-header.deadlines {
+            color: var(--category-deadlines);
+            text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+        }
+
+        .category-header.reminders {
+            color: var(--category-reminders);
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+        }
+
+        .category-header.trips {
+            color: var(--category-trips);
+            text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+
+        .category-items {
+            padding: 20px;
+            max-height: 320px;
+            overflow-y: auto;
+        }
+
+        .category-item {
+            background: rgba(21, 21, 32, 0.6);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            backdrop-filter: blur(15px);
+        }
+
+        [data-theme="light"] .category-item {
+            background: rgba(248, 250, 252, 0.6);
+        }
+
+        .category-item:hover {
+            background: rgba(99, 102, 241, 0.05);
+            transform: translateX(8px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.1);
+        }
+
+        .category-item.completed {
+            opacity: 0.6;
+        }
+
+        .category-item.completed .item-title {
+            text-decoration: line-through;
+        }
+
+        .item-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--accent-primary);
+            font-weight: 700;
+            min-width: 70px;
+            text-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+        }
+
+        .item-content {
+            flex-grow: 1;
+        }
+
+        .item-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .item-notes {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .item-actions {
+            display: flex;
+            flex-direction: row;
+            gap: 4px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .category-item:hover .item-actions,
+        .upcoming-item:hover .item-actions {
+            opacity: 1;
+        }
+
+        .action-btn {
+            width: 36px;
+            height: 36px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .action-btn:hover {
+            background: var(--accent-primary);
+            color: white;
+            transform: scale(1.15);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Timeline Modal */
+        .timeline-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(16px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            width: 800px;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-primary), var(--shadow-glow);
+            animation: modalFloat 0.5s ease;
+            position: relative;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .timeline-title {
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .timeline-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .timeline-item {
+            background: rgba(21, 21, 32, 0.6);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .timeline-item {
+            background: rgba(248, 250, 252, 0.6);
+        }
+
+        .timeline-item:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--accent-primary);
+        }
+
+        .timeline-time {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--accent-primary);
+            font-weight: 700;
+            min-width: 80px;
+        }
+
+        .timeline-event-content {
+            flex-grow: 1;
+        }
+
+        .timeline-event-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .timeline-event-notes {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .timeline-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .add-event-prompt {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .add-event-btn {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 16px;
+        }
+
+        .add-event-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Completed Events Section */
+        .completed-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 32px;
+            margin-top: 40px;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .completed-header {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        .completed-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        .completed-item {
+            background: rgba(21, 21, 32, 0.3);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 16px;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .completed-item {
+            background: rgba(248, 250, 252, 0.3);
+        }
+
+        .completed-item:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .completed-item-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+            margin-bottom: 4px;
+        }
+
+        .completed-item-date {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(16px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            width: 550px;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-primary), var(--shadow-glow);
+            animation: modalFloat 0.5s ease;
+            position: relative;
+        }
+
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary), var(--accent-primary));
+            border-radius: 24px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        @keyframes modalFloat {
+            from {
+                transform: translateY(40px) scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .modal-title {
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .close-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-tertiary);
+            border: none;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .close-btn:hover {
+            background: var(--accent-secondary);
+            color: var(--text-primary);
+            transform: scale(1.1);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .form-input {
+            width: 100%;
+            background: rgba(21, 21, 32, 0.8);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 16px 20px;
+            color: var(--text-primary);
+            font-size: 14px;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        [data-theme="light"] .form-input {
+            background: rgba(248, 250, 252, 0.8);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2), inset 0 0 20px rgba(99, 102, 241, 0.05);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23cbd5e1' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 16px center;
+            background-repeat: no-repeat;
+            background-size: 16px;
+            padding-right: 48px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: flex-end;
+            margin-top: 32px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        /* Quantum notification */
+        .notification {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: var(--text-primary);
+            padding: 20px 28px;
+            border-radius: 16px;
+            font-weight: 600;
+            box-shadow: var(--shadow-accent);
+            transform: translateY(100px) scale(0.8);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1001;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .notification.show {
+            transform: translateY(0) scale(1);
+        }
+
+        /* Mobile optimization */
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 24px 20px;
+            }
+
+            .title {
+                font-size: 28px;
+            }
+
+            .main-layout {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .upcoming-section {
+                position: static;
+                max-height: 400px;
+                order: 2;
+            }
+
+            .calendar-section {
+                order: 1;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .modal-content,
+            .timeline-content {
+                padding: 28px 24px;
+                margin: 20px;
+            }
+
+            .notification {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                text-align: center;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--accent-secondary), var(--accent-tertiary));
+        }
+
+        /* Hidden utility */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Filtered state */
+        .search-active .category-item.filtered-out,
+        .search-active .upcoming-item.filtered-out {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>🏖️ Cinnamon Shores Packing List</h1>
-            <p>June 9-13, 2025 • Port Aransas, Texas</p>
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-section">
+                <div class="logo">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                        <circle cx="12" cy="4" r="1.5"/>
+                    </svg>
+                    P4CAST
+                </div>
+                <h1 class="title"></h1>
+            </div>
+            <div class="controls">
+                <button class="btn" id="exportBtn">📤 Export</button>
+                <label for="importFile" class="btn">📥 Import</label>
+                <input type="file" id="importFile" accept=".json" style="display: none;">
+                <button class="btn btn-primary" id="addItemBtn">+ Add New</button>
+            </div>
+        </header>
+
+        <!-- Search -->
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search events, appointments, trips...">
         </div>
 
-```
-    <div class="tabs">
-        <button class="tab active" data-tab="my-list">My List</button>
-        <button class="tab" data-tab="family-list">Family List</button>
-        <button class="tab" data-tab="kids-list">Kids Helper 🎉</button>
-    </div>
-
-    <div id="my-list" class="tab-content active">
-        <div class="progress-container">
-            <h3>My Packing Progress</h3>
-            <div class="progress-bar">
-                <div class="progress-fill" id="myProgressFill"></div>
-            </div>
-            <div class="stats">
-                <div class="stat">
-                    <div class="stat-number" id="myPackedCount">0</div>
-                    <div class="stat-label">Packed</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number" id="myTotalCount">0</div>
-                    <div class="stat-label">Total Items</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number" id="myPercentPacked">0%</div>
-                    <div class="stat-label">Complete</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category">
-            <div class="category-header">
-                <span class="category-emoji">👕</span>
-                <span>Clothing</span>
-            </div>
-            <div class="items-container">
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">4-5 T-shirts or polos (breathable for hot weather)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">2-3 casual button-ups (for dinners at Lisabella's, Stout's)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">2-3 pairs of shorts (casual/chino)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">1 pair lightweight pants or jeans (for nicer dinners)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">1-2 swim trunks</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Undergarments (5+ pairs)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Socks (athletic + no-show for casual shoes)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Pajamas / loungewear</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Light hoodie or pullover (for cooler evenings)</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category">
-            <div class="category-header">
-                <span class="category-emoji">👟</span>
-                <span>Shoes</span>
-            </div>
-            <div class="items-container">
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Flip-flops / slides</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Casual sneakers</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Water shoes or boat shoes (for fishing day)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Dressier shoes (for dinner if needed)</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category">
-            <div class="category-header">
-                <span class="category-emoji">🧢</span>
-                <span>Accessories</span>
-            </div>
-            <div class="items-container">
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Sunglasses</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Hat (baseball or wide-brimmed for sun)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Belt</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Watch</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Reusable water bottle</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category">
-            <div class="category-header">
-                <span class="category-emoji">🎣</span>
-                <span>Fishing Trip (June 10)</span>
-            </div>
-            <div class="items-container">
-                <div class="special-note">
-                    🐟 Deep sea fishing charter day - be prepared for sun & spray!
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Long-sleeve UV shirt</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Quick-dry shorts or fishing pants</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Fishing gloves (if you use them)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Polarized sunglasses</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Small dry bag or backpack</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Motion sickness meds (if needed)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Extra sunscreen</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Fishing license (if not covered by charter)</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category">
-            <div class="category-header">
-                <span class="category-emoji">💍</span>
-                <span>Proposal Assist (June 12, 4:30-5:30 PM)</span>
-            </div>
-            <div class="items-container">
-                <div class="special-note">
-                    💕 Special moment helper - look sharp and be ready to capture memories!
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Dress shirt or nice button-up</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Slacks or clean jeans</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Casual dress shoes or loafers</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Camera or phone for photos</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Any props or materials needed</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category">
-            <div class="category-header">
-                <span class="category-emoji">🏖️</span>
-                <span>Beach Gear</span>
-            </div>
-            <div class="items-container">
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Beach towel (1-2)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Portable beach chair (if not provided)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Waterproof phone pouch</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Small cooler for drinks</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Book or Kindle</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Beach umbrella or pop-up shade</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category">
-            <div class="category-header">
-                <span class="category-emoji">🧼</span>
-                <span>Toiletries</span>
-            </div>
-            <div class="items-container">
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Toothbrush + toothpaste</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Razor + shaving cream</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Deodorant</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Shampoo + body wash</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Hair product</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Sunscreen (face + body, SPF 30+)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Lip balm with SPF</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">After-sun lotion or aloe</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category">
-            <div class="category-header">
-                <span class="category-emoji">📱</span>
-                <span>Tech & Extras</span>
-            </div>
-            <div class="items-container">
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Phone + charger</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">AirPods/headphones</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Portable speaker (if bringing)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">iPad or Kindle</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">reMarkable tablet (for planning, reading)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">WHOOP charger</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Wallet + ID + health insurance card</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Medications</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Snacks/gum for travel</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Travel laundry bag</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Backpack or day bag</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Portable power bank</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="family-list" class="tab-content">
-        <div class="progress-container">
-            <h3>Family Packing Progress</h3>
-            <div class="progress-bar">
-                <div class="progress-fill" id="familyProgressFill"></div>
-            </div>
-            <div class="stats">
-                <div class="stat">
-                    <div class="stat-number" id="familyPackedCount">0</div>
-                    <div class="stat-label">Packed</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number" id="familyTotalCount">0</div>
-                    <div class="stat-label">Total Items</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number" id="familyPercentPacked">0%</div>
-                    <div class="stat-label">Complete</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category">
-            <div class="category-header">
-                <span class="category-emoji">👶</span>
-                <span>H (Little One)</span>
-            </div>
-            <div class="items-container">
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">5 sets of PJ's</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Hat</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Socks x5</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Shorts x5</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Pants x2</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Sunglasses</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Toothbrushes & toothpaste</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Floaties</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Bottles x2</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Bedtime diapers, pull ups, wipes, & swim diapers</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Pacifiers</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Tennis shoes & pool shoes</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Bathing suits</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Bedtime water</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Goggles</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category">
-            <div class="category-header">
-                <span class="category-emoji">👧</span>
-                <span>R (Daughter)</span>
-            </div>
-            <div class="items-container">
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Socks x5</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">5 sets of PJ's</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Hat</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Leggings x2</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Skirts x3</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Sunglasses</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">10 pairs of panties</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Toothbrushes & toothpaste</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Bike shorts x2</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Jean shorts x1</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Dresses x6</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Pony tails, brush</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Floaties</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Tennis shoes & pool shoes</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Goggles</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Bedtime water</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category">
-            <div class="category-header">
-                <span class="category-emoji">👩</span>
-                <span>L & A (Mom & Adult)</span>
-            </div>
-            <div class="items-container">
-                <div class="person-section">
-                    <div class="person-header">👩 L's Items</div>
-                    <div class="item">
-                        <div class="checkbox"></div>
-                        <div class="item-text">Pool shoes</div>
-                    </div>
-                    <div class="item">
-                        <div class="checkbox"></div>
-                        <div class="item-text">Toothbrushes & toothpaste</div>
-                    </div>
-                    <div class="item">
-                        <div class="checkbox"></div>
-                        <div class="item-text">Hat x2</div>
-                    </div>
-                    <div class="item">
-                        <div class="checkbox"></div>
-                        <div class="item-text">Phone charger, WHOOP charger, laptop charger</div>
-                    </div>
-                </div>
-                
-                <div class="person-section">
-                    <div class="person-header">👤 A's Items</div>
-                    <div class="item">
-                        <div class="checkbox"></div>
-                        <div class="item-text">Socks x3</div>
-                    </div>
-                    <div class="item">
-                        <div class="checkbox"></div>
-                        <div class="item-text">Toothbrushes & toothpaste</div>
-                    </div>
-                    <div class="item">
-                        <div class="checkbox"></div>
-                        <div class="item-text">Hat x2</div>
-                    </div>
-                    <div class="item">
-                        <div class="checkbox"></div>
-                        <div class="item-text">Sunglasses</div>
-                    </div>
-                    <div class="item">
-                        <div class="checkbox"></div>
-                        <div class="item-text">10 pairs of panties</div>
-                    </div>
-                    <div class="item">
-                        <div class="checkbox"></div>
-                        <div class="item-text">Phone charger, watch charger, laptop/iPad charger</div>
-                    </div>
-                    <div class="item">
-                        <div class="checkbox"></div>
-                        <div class="item-text">Tampons</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category">
-            <div class="category-header">
-                <span class="category-emoji">🧴</span>
-                <span>Shared Items & Toiletries</span>
-            </div>
-            <div class="items-container">
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Travel shampoo and conditioner for all</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Sunscreen (RH)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Sunscreen (AL)</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category">
-            <div class="category-header">
-                <span class="category-emoji">🏠</span>
-                <span>House & Equipment</span>
-            </div>
-            <div class="items-container">
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Beach chairs x2</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Pack & play with sheets</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Tiny pillows for all</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Sound machine</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Beats pill speaker & charger</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Beach toys</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Goggles</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">T.P.</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Raincoats</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Cooler</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Kraft cheese</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category">
-            <div class="category-header">
-                <span class="category-emoji">🛒</span>
-                <span>Groceries</span>
-            </div>
-            <div class="items-container">
-                <div class="grocery-note">FOC = First Day On Coast</div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Whole milk (FOC)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Wipes & pull ups (FOC)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Popcorn (FOC)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Veggie Chips & Veggie Straws per R request (FOC)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Bananas (FOC)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Pouches (FOC)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Chocolate milk (FOC)</div>
-                </div>
-                
-                <div class="grocery-note">BOC = Buy On Coast</div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Cookies or muffins? (BOC)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Mac & Cheese (BOC)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Chips (BOC)</div>
-                </div>
-                <div class="item">
-                    <div class="checkbox"></div>
-                    <div class="item-text">Bottles of water (BOC)</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="kids-list" class="tab-content kids-tab-content">
-        <div class="kids-header">
-            <h2>🏖️ Kids Packing Helper! 🎉</h2>
-            <p>Help Mommy and Daddy pack for the beach! 🌊</p>
-        </div>
-
-        <div class="kids-progress">
-            <h3>🌟 How much have we packed? 🌟</h3>
-            <div class="progress-bar">
-                <div class="progress-fill" id="kidsProgressFill"></div>
-            </div>
-            <div class="stats">
-                <div class="stat">
-                    <div class="stat-number" id="kidsPackedCount">0</div>
-                    <div class="stat-label">✅ Done!</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number" id="kidsTotalCount">0</div>
-                    <div class="stat-label">📦 Total</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number" id="kidsPercentPacked">0%</div>
-                    <div class="stat-label">🎯 Finished</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="kids-category">
-            <div class="kids-category-header">
-                <span class="kids-category-emoji">👶</span>
-                <span>Baby H's Things</span>
-            </div>
-            <div class="kids-items-container">
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🌙</div>
-                    <div class="kids-item-label">PJs</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">👒</div>
-                    <div class="kids-item-label">Hat</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🧦</div>
-                    <div class="kids-item-label">Socks</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🩳</div>
-                    <div class="kids-item-label">Shorts</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">👖</div>
-                    <div class="kids-item-label">Pants</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🕶️</div>
-                    <div class="kids-item-label">Sunglasses</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🦷</div>
-                    <div class="kids-item-label">Toothbrush</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🏊‍♂️</div>
-                    <div class="kids-item-label">Floaties</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🍼</div>
-                    <div class="kids-item-label">Bottles</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">👶</div>
-                    <div class="kids-item-label">Diapers</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🍼</div>
-                    <div class="kids-item-label">Pacifiers</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">👟</div>
-                    <div class="kids-item-label">Shoes</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">👙</div>
-                    <div class="kids-item-label">Swimsuit</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">💧</div>
-                    <div class="kids-item-label">Water</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🥽</div>
-                    <div class="kids-item-label">Goggles</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="kids-category">
-            <div class="kids-category-header">
-                <span class="kids-category-emoji">👧</span>
-                <span>Sister R's Things</span>
-            </div>
-            <div class="kids-items-container">
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🧦</div>
-                    <div class="kids-item-label">Socks</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🌙</div>
-                    <div class="kids-item-label">PJs</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">👒</div>
-                    <div class="kids-item-label">Hat</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">👖</div>
-                    <div class="kids-item-label">Leggings</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">👗</div>
-                    <div class="kids-item-label">Skirts</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🕶️</div>
-                    <div class="kids-item-label">Sunglasses</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🩲</div>
-                    <div class="kids-item-label">Underwear</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🦷</div>
-                    <div class="kids-item-label">Toothbrush</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🩳</div>
-                    <div class="kids-item-label">Bike Shorts</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">👖</div>
-                    <div class="kids-item-label">Jean Shorts</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">👗</div>
-                    <div class="kids-item-label">Dresses</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">💇‍♀️</div>
-                    <div class="kids-item-label">Hair Stuff</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🏊‍♀️</div>
-                    <div class="kids-item-label">Floaties</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">👟</div>
-                    <div class="kids-item-label">Shoes</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🥽</div>
-                    <div class="kids-item-label">Goggles</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">💧</div>
-                    <div class="kids-item-label">Water</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="kids-category">
-            <div class="kids-category-header">
-                <span class="kids-category-emoji">👩</span>
-                <span>Mommy & Grown-ups</span>
-            </div>
-            <div class="kids-items-container">
-                <div class="kids-item">
-                    <div class="kids-item-emoji">👡</div>
-                    <div class="kids-item-label">Pool Shoes</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🦷</div>
-                    <div class="kids-item-label">Toothbrush</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">👒</div>
-                    <div class="kids-item-label">Hats</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🔌</div>
-                    <div class="kids-item-label">Chargers</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🧦</div>
-                    <div class="kids-item-label">Socks</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🕶️</div>
-                    <div class="kids-item-label">Sunglasses</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🩲</div>
-                    <div class="kids-item-label">Underwear</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">📱</div>
-                    <div class="kids-item-label">Phone Stuff</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="kids-category">
-            <div class="kids-category-header">
-                <span class="kids-category-emoji">🧴</span>
-                <span>Bath & Clean Stuff</span>
-            </div>
-            <div class="kids-items-container">
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🧴</div>
-                    <div class="kids-item-label">Shampoo</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🧴</div>
-                    <div class="kids-item-label">Conditioner</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🧴</div>
-                    <div class="kids-item-label">Sunscreen</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="kids-category">
-            <div class="kids-category-header">
-                <span class="kids-category-emoji">🏠</span>
-                <span>Big Things for Beach House</span>
-            </div>
-            <div class="kids-items-container">
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🪑</div>
-                    <div class="kids-item-label">Beach Chairs</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🛏️</div>
-                    <div class="kids-item-label">Pack & Play</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🛌</div>
-                    <div class="kids-item-label">Pillows</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🔊</div>
-                    <div class="kids-item-label">Sound Machine</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🎵</div>
-                    <div class="kids-item-label">Speaker</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🏖️</div>
-                    <div class="kids-item-label">Beach Toys</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🥽</div>
-                    <div class="kids-item-label">More Goggles</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🧻</div>
-                    <div class="kids-item-label">Toilet Paper</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🧥</div>
-                    <div class="kids-item-label">Raincoats</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🧊</div>
-                    <div class="kids-item-label">Cooler</div>
-                </div>
-                <div class="kids-item">
-                    <div class="kids-item-emoji">🧀</div>
-                    <div class="kids-item-label">Cheese</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="kids-category">
-            <div class="kids-category-header">
-                <span class="kids-category-emoji">🛒</span>
-                <span>Yummy Food to Buy!</span>
-            </div>
-            <div class="kids-special-note">
-                🥛 Things to buy before we go to the beach! 🍌
-            </div>
-            <div class="kids-grocery-section">
-                <div class="kids-grocery-item">
-                    <div class="kids-item-emoji">🥛</div>
-                    <div class="kids-item-label">Milk</div>
-                </div>
-                <div class="kids-grocery-item">
-                    <div class="kids-item-emoji">👶</div>
-                    <div class="kids-item-label">Wipes</div>
-                </div>
-                <div class="kids-grocery-item">
-                    <div class="kids-item-emoji">🍿</div>
-                    <div class="kids-item-label">Popcorn</div>
-                </div>
-                <div class="kids-grocery-item">
-                    <div class="kids-item-emoji">🥕</div>
-                    <div class="kids-item-label">Veggie Chips</div>
-                </div>
-                <div class="kids-grocery-item">
-                    <div class="kids-item-emoji">🍌</div>
-                    <div class="kids-item-label">Bananas</div>
-                </div>
-                <div class="kids-grocery-item">
-                    <div class="kids-item-emoji">🍎</div>
-                    <div class="kids-item-label">Pouches</div>
-                </div>
-                <div class="kids-grocery-item">
-                    <div class="kids-item-emoji">🍫</div>
-                    <div class="kids-item-label">Chocolate Milk</div>
-                </div>
-            </div>
+        <!-- Theme and Visibility Toggles -->
+        <div class="view-toggle">
+            <label for="themeToggle" style="color: var(--text-secondary); font-size: 14px; font-weight: 600;">Dark Mode</label>
+            <input type="checkbox" id="themeToggle" class="toggle-checkbox" checked>
+            <label for="themeToggle" class="toggle-switch"></label>
             
-            <div class="kids-special-note">
-                🏖️ Things to buy when we get to the beach! 🌊
+            <label for="showCompletedToggle" style="color: var(--text-secondary); font-size: 14px; font-weight: 600;">Show Completed</label>
+            <input type="checkbox" id="showCompletedToggle" class="toggle-checkbox" checked>
+            <label for="showCompletedToggle" class="toggle-switch"></label>
+        </div>
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Calendar Section -->
+            <div class="calendar-section">
+                <div class="calendar-header">
+                    <button class="nav-btn" id="prevBtn">‹</button>
+                    <h2 class="calendar-title" id="calendarTitle">May 2025</h2>
+                    <button class="nav-btn" id="nextBtn">›</button>
+                </div>
+                <div class="calendar-content">
+                    <div class="calendar-months" id="calendarContainer">
+                        <!-- Calendar will be rendered here -->
+                    </div>
+                </div>
             </div>
-            <div class="kids-grocery-section">
-                <div class="kids-grocery-item">
-                    <div class="kids-item-emoji">🍪</div>
-                    <div class="kids-item-label">Cookies</div>
+
+            <!-- Upcoming Events -->
+            <div class="upcoming-section">
+                <div class="upcoming-header">
+                    <h2 class="upcoming-title">Upcoming Events</h2>
                 </div>
-                <div class="kids-grocery-item">
-                    <div class="kids-item-emoji">🧀</div>
-                    <div class="kids-item-label">Mac & Cheese</div>
-                </div>
-                <div class="kids-grocery-item">
-                    <div class="kids-item-emoji">🥔</div>
-                    <div class="kids-item-label">Chips</div>
-                </div>
-                <div class="kids-grocery-item">
-                    <div class="kids-item-emoji">💧</div>
-                    <div class="kids-item-label">Water Bottles</div>
+                <div class="upcoming-list" id="upcomingList">
+                    <!-- Upcoming items will be rendered here -->
                 </div>
             </div>
         </div>
+
+        <!-- Categories -->
+        <div class="categories-section">
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Categories will be rendered here -->
+            </div>
+        </div>
+
+        <!-- Completed Events Section -->
+        <div class="completed-section" id="completedSection">
+            <div class="completed-header">Completed Events</div>
+            <div class="completed-list" id="completedList">
+
+                <!-- Completed items will be rendered here -->
+            </div>
+        </div>
     </div>
-</div>
 
-<script>
-    // Tab switching functionality
-    document.addEventListener('DOMContentLoaded', function() {
-        const tabs = document.querySelectorAll('.tab');
-        const tabContents = document.querySelectorAll('.tab-content');
-        
-        tabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                const targetTab = this.getAttribute('data-tab');
+    <!-- Item Modal -->
+    <div class="modal" id="itemModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Add New Item</h2>
+                <button class="close-btn" id="closeModalBtn">×</button>
+            </div>
+            <form id="itemForm">
+                <input type="hidden" id="itemId">
                 
-                // Remove active class from all tabs and content
-                tabs.forEach(t => t.classList.remove('active'));
-                tabContents.forEach(tc => tc.classList.remove('active'));
+                <div class="form-group">
+                    <label class="form-label" for="itemTitle">Title</label>
+                    <input type="text" class="form-input" id="itemTitle" required>
+                </div>
                 
-                // Add active class to clicked tab and corresponding content
-                this.classList.add('active');
-                document.getElementById(targetTab).classList.add('active');
+                <div class="form-group">
+                    <label class="form-label" for="itemCategory">Category</label>
+                    <select class="form-input form-select" id="itemCategory" required>
+                        <option value="appointments">Appointment</option>
+                        <option value="events">Event</option>
+                        <option value="deadlines">Kids Events/Appts</option>
+                        <option value="reminders">Reminder</option>
+                        <option value="trips">Trip</option>
+                    </select>
+                </div>
                 
-                // Update progress for the active tab
-                updateProgress();
-            });
-        });
-        
-        // Initialize checklist functionality for all tabs
-        const allCheckboxes = document.querySelectorAll('.checkbox');
-        const allItems = document.querySelectorAll('.item');
-        const kidsItems = document.querySelectorAll('.kids-item, .kids-grocery-item');
-        
-        // Add click handlers to regular checkboxes
-        allCheckboxes.forEach((checkbox, index) => {
-            checkbox.addEventListener('click', function() {
-                const item = allItems[index];
+                <div class="form-group" id="singleDateGroup">
+                    <label class="form-label" for="itemDate">Date</label>
+                    <input type="date" class="form-input" id="itemDate">
+                </div>
                 
-                // Toggle checked state
-                if (checkbox.classList.contains('checked')) {
-                    checkbox.classList.remove('checked');
-                    item.classList.remove('checked');
-                } else {
-                    checkbox.classList.add('checked');
-                    item.classList.add('checked');
-                }
+                <div class="form-group hidden" id="dateRangeGroup">
+                    <label class="form-label" for="itemStartDate">Start Date</label>
+                    <input type="date" class="form-input" id="itemStartDate">
+                    <label class="form-label" for="itemEndDate" style="margin-top: 12px;">End Date</label>
+                    <input type="date" class="form-input" id="itemEndDate">
+                </div>
                 
-                updateProgress();
-            });
-        });
+                <div class="form-group" id="timeGroup">
+                    <label class="form-label" for="itemTime">Time (optional)</label>
+                    <input type="time" class="form-input" id="itemTime">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="itemNotes">Notes (optional)</label>
+                    <textarea class="form-input form-textarea" id="itemNotes" rows="3"></textarea>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn" id="cancelBtn">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="saveBtn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-        // Add click handlers to kids items
-        kidsItems.forEach((item) => {
-            item.addEventListener('click', function() {
-                // Toggle checked state with fun animation
-                if (item.classList.contains('checked')) {
-                    item.classList.remove('checked');
-                } else {
-                    item.classList.add('checked');
-                    // Add a little celebration animation
-                    item.style.transform = 'scale(1.2)';
-                    setTimeout(() => {
-                        item.style.transform = '';
-                    }, 200);
-                }
-                
-                updateProgress();
-            });
-        });
+    <!-- Timeline Modal -->
+    <div class="timeline-modal" id="timelineModal">
+        <div class="timeline-content">
+            <div class="timeline-header">
+                <h2 class="timeline-title" id="timelineTitle">Timeline for May 31, 2025</h2>
+                <button class="close-btn" id="closeTimelineBtn">×</button>
+            </div>
+            <div class="timeline-list" id="timelineList">
+                <!-- Timeline items will be rendered here -->
+            </div>
+            <div class="add-event-prompt">
+                <p>Click below to add an event for this day</p>
+                <button class="add-event-btn" id="addEventFromTimeline">+ Add Event</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // Global variables
+        const STORAGE_KEY = 'phillips4cast-data';
+        let items = [];
+        let completedItems = [];
+        let currentMonth = new Date();
+        let selectedDate = null;
+        let searchQuery = '';
         
-        // Update progress display
-        function updateProgress() {
-            const activeTab = document.querySelector('.tab.active').getAttribute('data-tab');
-            
-            if (activeTab === 'kids-list') {
-                // Kids tab progress
-                const kidsActiveItems = document.querySelectorAll('.kids-item, .kids-grocery-item');
-                const kidsCheckedItems = document.querySelectorAll('.kids-item.checked, .kids-grocery-item.checked');
-                
-                const totalItems = kidsActiveItems.length;
-                const packedItems = kidsCheckedItems.length;
-                const percentage = totalItems > 0 ? Math.round((packedItems / totalItems) * 100) : 0;
-                
-                document.getElementById('kidsProgressFill').style.width = percentage + '%';
-                document.getElementById('kidsPackedCount').textContent = packedItems;
-                document.getElementById('kidsTotalCount').textContent = totalItems;
-                document.getElementById('kidsPercentPacked').textContent = percentage + '%';
-                
-                // Celebration when everything is done!
-                if (percentage === 100 && packedItems > 0) {
-                    setTimeout(() => {
-                        alert('🎉 WOW! Great job helping pack! 🎉\n\nYou checked everything! Time for the beach! 🏖️');
-                    }, 500);
+        // Sample data matching your JSON structure
+        const sampleData = {
+            "active": [
+                {
+                    "id": 12,
+                    "title": "Mid-Year Staff Reviews",
+                    "category": "events",
+                    "notes": "",
+                    "date": "2025-06-19",
+                    "time": ""
+                },
+                {
+                    "id": 13,
+                    "title": "2Q BOD",
+                    "category": "events",
+                    "notes": "",
+                    "date": "2025-07-09",
+                    "time": ""
+                },
+                {
+                    "id": 14,
+                    "title": "Cinnamon Shores",
+                    "category": "trips",
+                    "notes": "w/ Jiminez Fam",
+                    "startDate": "2025-06-08",
+                    "endDate": "2025-06-13"
+                },
+                {
+                    "id": 15,
+                    "title": "Grand Tetons, WY",
+                    "category": "trips",
+                    "notes": "",
+                    "startDate": "2025-07-10",
+                    "endDate": "2025-07-18"
+                },
+                {
+                    "id": 16,
+                    "title": "Lichty Catch-Up Call",
+                    "category": "appointments",
+                    "notes": "Start Anne's perm life insurance once Riley out of Primrose.",
+                    "date": "2025-06-03",
+                    "time": "13:30"
+                },
+                {
+                    "id": 22,
+                    "title": "Fishing with WB",
+                    "category": "appointments",
+                    "notes": "",
+                    "date": "2025-06-11",
+                    "time": "05:00"
+                },
+                {
+                    "id": 36,
+                    "title": "Poker Night",
+                    "category": "events",
+                    "notes": "",
+                    "date": "2025-06-06",
+                    "time": "19:00"
+                },
+                {
+                    "id": 42,
+                    "title": "Anne endoscopy",
+                    "category": "reminders",
+                    "notes": "",
+                    "date": "2025-07-08",
+                    "time": ""
+                },
+                {
+                    "id": 45,
+                    "title": "Eleanor and Eva Birthday Parties",
+                    "category": "deadlines",
+                    "notes": "Eva - 10am\nEleanor - 11:30am",
+                    "date": "2025-05-31",
+                    "time": "10:00"
+                },
+                {
+                    "id": 46,
+                    "title": "VBS for Riley",
+                    "category": "deadlines",
+                    "notes": "Tuesday (6/3 thru Thursday (6/5); 9am-12:30pm",
+                    "date": "2025-06-03",
+                    "time": ""
                 }
-            } else {
-                // Regular tabs progress
-                const activeContent = document.getElementById(activeTab);
-                const checkboxes = activeContent.querySelectorAll('.checkbox');
-                const checkedItems = activeContent.querySelectorAll('.checkbox.checked');
-                
-                const totalItems = checkboxes.length;
-                const packedItems = checkedItems.length;
-                const percentage = totalItems > 0 ? Math.round((packedItems / totalItems) * 100) : 0;
-                
-                // Update progress bar and stats based on active tab
-                if (activeTab === 'my-list') {
-                    document.getElementById('myProgressFill').style.width = percentage + '%';
-                    document.getElementById('myPackedCount').textContent = packedItems;
-                    document.getElementById('myTotalCount').textContent = totalItems;
-                    document.getElementById('myPercentPacked').textContent = percentage + '%';
-                } else if (activeTab === 'family-list') {
-                    document.getElementById('familyProgressFill').style.width = percentage + '%';
-                    document.getElementById('familyPackedCount').textContent = packedItems;
-                    document.getElementById('familyTotalCount').textContent = totalItems;
-                    document.getElementById('familyPercentPacked').textContent = percentage + '%';
+            ]
+        };
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', init);
+
+        function init() {
+            loadData();
+            setupEventListeners();
+            initTheme();
+            initCompletedVisibility();
+            render();
+        }
+
+        function loadData() {
+            try {
+                const stored = localStorage.getItem(STORAGE_KEY);
+                if (stored) {
+                    const data = JSON.parse(stored);
+                    items = data.active || data || [];
+                    completedItems = data.completed || [];
+                } else {
+                    items = sampleData.active;
+                    completedItems = [];
+                    saveData();
                 }
+            } catch (error) {
+                console.error('Error loading data:', error);
+                items = sampleData.active;
+                completedItems = [];
             }
         }
-        
-        // Initialize progress on page load
-        updateProgress();
-    });
-</script>
-```
 
+        function saveData() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify({ 
+                    active: items,
+                    completed: completedItems 
+                }));
+                showNotification('Data saved successfully!');
+            } catch (error) {
+                console.error('Error saving data:', error);
+                showNotification('Error saving data', 'error');
+            }
+        }
+
+        function initTheme() {
+            const isDark = localStorage.getItem('theme') !== 'light';
+            document.getElementById('themeToggle').checked = isDark;
+            document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+        }
+
+        function toggleCompletedSection() {
+            const isChecked = document.getElementById('showCompletedToggle').checked;
+            const section = document.getElementById('completedSection');
+            
+            section.style.display = isChecked ? 'block' : 'none';
+            
+            // Save preference
+            localStorage.setItem('showCompleted', isChecked);
+        }
+
+        function initCompletedVisibility() {
+            const showCompleted = localStorage.getItem('showCompleted') !== 'false';
+            const section = document.getElementById('completedSection');
+            const toggle = document.getElementById('showCompletedToggle');
+            
+            section.style.display = showCompleted ? 'block' : 'none';
+            toggle.checked = showCompleted;
+        }
+
+        function setupEventListeners() {
+            // Header buttons
+            document.getElementById('addItemBtn').addEventListener('click', openAddModal);
+            document.getElementById('exportBtn').addEventListener('click', exportData);
+            document.getElementById('importFile').addEventListener('change', importData);
+
+            // Search
+            document.getElementById('searchInput').addEventListener('input', handleSearch);
+
+            // Theme toggle
+            document.getElementById('themeToggle').addEventListener('change', toggleTheme);
+
+            // Show completed toggle
+            document.getElementById('showCompletedToggle').addEventListener('change', toggleCompletedSection);
+
+            // Calendar navigation
+            document.getElementById('prevBtn').addEventListener('click', () => {
+                currentMonth.setMonth(currentMonth.getMonth() - 1);
+                renderCalendar();
+            });
+            document.getElementById('nextBtn').addEventListener('click', () => {
+                currentMonth.setMonth(currentMonth.getMonth() + 1);
+                renderCalendar();
+            });
+
+            // Modal
+            document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+            document.getElementById('cancelBtn').addEventListener('click', closeModal);
+            document.getElementById('saveBtn').addEventListener('click', saveItem);
+            document.getElementById('itemCategory').addEventListener('change', toggleDateFields);
+
+            // Timeline modal
+            document.getElementById('closeTimelineBtn').addEventListener('click', closeTimelineModal);
+            document.getElementById('addEventFromTimeline').addEventListener('click', () => {
+                closeTimelineModal();
+                openAddModalForDate(selectedDate);
+            });
+
+            // Click outside modal to close
+            document.getElementById('itemModal').addEventListener('click', (e) => {
+                if (e.target.id === 'itemModal') closeModal();
+            });
+
+            document.getElementById('timelineModal').addEventListener('click', (e) => {
+                if (e.target.id === 'timelineModal') closeTimelineModal();
+            });
+
+            // ESC key to close modals
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeModal();
+                    closeTimelineModal();
+                }
+            });
+        }
+
+        function toggleTheme() {
+            const isDark = document.getElementById('themeToggle').checked;
+            document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        function render() {
+            renderCalendar();
+            renderUpcoming();
+            renderCategories();
+            renderCompleted();
+        }
+
+        function renderCalendar() {
+            const container = document.getElementById('calendarContainer');
+            const title = document.getElementById('calendarTitle');
+
+            const month = currentMonth;
+            title.textContent = month.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+            container.innerHTML = renderMonth(month);
+        }
+
+        function renderMonth(month) {
+            const firstDay = new Date(month.getFullYear(), month.getMonth(), 1);
+            const lastDay = new Date(month.getFullYear(), month.getMonth() + 1, 0);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            let html = `
+                <div class="month-container">
+                    <div class="month-title">${month.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</div>
+                    <div class="calendar-grid">
+                        <div class="day-header">Sun</div>
+                        <div class="day-header">Mon</div>
+                        <div class="day-header">Tue</div>
+                        <div class="day-header">Wed</div>
+                        <div class="day-header">Thu</div>
+                        <div class="day-header">Fri</div>
+                        <div class="day-header">Sat</div>
+            `;
+
+            // Previous month days
+            const startDate = new Date(firstDay);
+            startDate.setDate(startDate.getDate() - firstDay.getDay());
+            
+            for (let i = 0; i < firstDay.getDay(); i++) {
+                const date = new Date(startDate);
+                date.setDate(date.getDate() + i);
+                html += `<div class="day other-month"><div class="day-number">${date.getDate()}</div></div>`;
+            }
+
+            // Current month days
+            for (let day = 1; day <= lastDay.getDate(); day++) {
+                const date = new Date(month.getFullYear(), month.getMonth(), day);
+                const dateStr = formatDateISO(date);
+                const dayEvents = getEventsForDate(dateStr);
+                const isToday = date.getTime() === today.getTime();
+
+                html += `
+                    <div class="day ${isToday ? 'current' : ''}" onclick="showDayTimeline('${dateStr}')">
+                        <div class="day-number">${day}</div>
+                        <div class="day-events">
+                            ${dayEvents.slice(0, 3).map(event => `<div class="day-event ${event.category} ${event.completed ? 'completed' : ''}">${event.title}</div>`).join('')}
+                            ${dayEvents.length > 3 ? `<div class="day-event">+${dayEvents.length - 3} more</div>` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Next month days to fill grid
+            const totalCells = Math.ceil((firstDay.getDay() + lastDay.getDate()) / 7) * 7;
+            const remainingCells = totalCells - (firstDay.getDay() + lastDay.getDate());
+            
+            for (let day = 1; day <= remainingCells; day++) {
+                html += `<div class="day other-month"><div class="day-number">${day}</div></div>`;
+            }
+
+            html += '</div></div>';
+            return html;
+        }
+
+        function renderUpcoming() {
+            const container = document.getElementById('upcomingList');
+            const today = new Date();
+            
+            const upcomingItems = items
+                .filter(item => {
+                    const itemDate = new Date((item.date || item.startDate) + 'T00:00:00');
+                    const matchesSearch = !searchQuery || matchesSearchQuery(item);
+                    return itemDate >= today && !item.completed && matchesSearch;
+                })
+                .sort((a, b) => new Date(a.date || a.startDate) - new Date(b.date || b.startDate))
+                .slice(0, 10);
+
+            container.innerHTML = upcomingItems.map(item => `
+    <div class="upcoming-item ${item.category} ${getItemStatus(item)} ${searchQuery && !matchesSearchQuery(item) ? 'filtered-out' : ''}">
+        <div class="upcoming-date">${formatDateDisplay(item.date || item.startDate)}</div>
+        <div class="upcoming-title-text">${item.title}</div>
+        ${item.time ? `<div class="upcoming-details">${formatTime(item.time)}</div>` : ''}
+        ${item.notes ? `<div class="upcoming-details">${item.notes}</div>` : ''}
+        <div class="item-actions">
+                        <button class="action-btn" onclick="toggleComplete(${item.id})" title="Mark Complete">✓</button>
+                        <button class="action-btn" onclick="editItem(${item.id})" title="Edit">✏️</button>
+                        <button class="action-btn" onclick="deleteItem(${item.id})" title="Delete">🗑️</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderCategories() {
+            const container = document.getElementById('categoriesGrid');
+            const categories = {
+                'appointments': 'Appointments',
+                'events': 'Events', 
+                'deadlines': 'Kids Events/Appts',
+                'reminders': 'Reminders',
+                'trips': 'Trips'
+            };
+
+            container.innerHTML = Object.entries(categories).map(([key, title]) => {
+                const categoryItems = items.filter(item => 
+                    item.category === key && 
+                    !item.completed &&
+                    (!searchQuery || matchesSearchQuery(item))
+                );
+                
+                return `
+                    <div class="category-card">
+                        <div class="category-header ${key}">${title}</div>
+                        <div class="category-items">
+                            ${categoryItems.map(item => `
+                                <div class="category-item ${searchQuery && !matchesSearchQuery(item) ? 'filtered-out' : ''}">
+                                    <div class="item-date">${formatDateDisplay(item.date || item.startDate)}</div>
+                                    <div class="item-content">
+                                        <div class="item-title">${item.title}</div>
+                                        ${item.time ? `<div class="item-notes">${formatTime(item.time)}</div>` : ''}
+                                        ${item.notes ? `<div class="item-notes">${item.notes}</div>` : ''}
+                                    </div>
+                                    <div class="item-actions">
+                                        <button class="action-btn" onclick="toggleComplete(${item.id})" title="Mark Complete">✓</button>
+                                        <button class="action-btn" onclick="editItem(${item.id})" title="Edit">✏️</button>
+                                        <button class="action-btn" onclick="deleteItem(${item.id})" title="Delete">🗑️</button>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderCompleted() {
+            const container = document.getElementById('completedList');
+            const section = document.getElementById('completedSection');
+            
+            if (completedItems.length === 0) {
+                section.style.display = 'none';
+                return;
+            }
+            
+            section.style.display = 'block';
+            container.innerHTML = completedItems.map(item => `
+                <div class="completed-item">
+                    <div class="completed-item-title">${item.title}</div>
+                    <div class="completed-item-date">${formatDateDisplay(item.date || item.startDate)}</div>
+                    <div class="item-actions" style="opacity: 1; margin-top: 8px;">
+                        <button class="action-btn" onclick="uncompleteItem(${item.id})" title="Mark Incomplete">↩️</button>
+                        <button class="action-btn" onclick="deleteCompletedItem(${item.id})" title="Delete">🗑️</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showDayTimeline(dateStr) {
+            selectedDate = dateStr;
+            const date = new Date(dateStr + 'T00:00:00');
+            const dayEvents = getEventsForDate(dateStr);
+            
+            document.getElementById('timelineTitle').textContent = 
+                `Timeline for ${date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}`;
+            
+            const timelineList = document.getElementById('timelineList');
+            
+            if (dayEvents.length === 0) {
+                timelineList.innerHTML = '<div class="add-event-prompt"><p>No events scheduled for this day</p></div>';
+            } else {
+                // Sort events by time
+                const sortedEvents = dayEvents.sort((a, b) => {
+                    const timeA = a.time || '00:00';
+                    const timeB = b.time || '00:00';
+                    return timeA.localeCompare(timeB);
+                });
+
+                timelineList.innerHTML = sortedEvents.map(event => `
+                    <div class="timeline-item">
+                        <div class="timeline-time">${event.time ? formatTime(event.time) : 'All Day'}</div>
+                        <div class="timeline-event-content">
+                            <div class="timeline-event-title ${event.completed ? 'completed' : ''}">${event.title}</div>
+                            ${event.notes ? `<div class="timeline-event-notes">${event.notes}</div>` : ''}
+                        </div>
+                        <div class="timeline-actions">
+                            <button class="action-btn" onclick="toggleComplete(${event.id})" title="Mark Complete">✓</button>
+                            <button class="action-btn" onclick="editItem(${event.id})" title="Edit">✏️</button>
+                            <button class="action-btn" onclick="deleteItem(${event.id})" title="Delete">🗑️</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            document.getElementById('timelineModal').style.display = 'flex';
+        }
+
+        function closeTimelineModal() {
+            document.getElementById('timelineModal').style.display = 'none';
+            selectedDate = null;
+        }
+
+        function getEventsForDate(dateStr) {
+            // Include both active items and completed items for calendar display
+            const allItems = [...items, ...completedItems];
+            
+            return allItems.filter(item => {
+                if (item.category === 'trips') {
+                    return dateStr >= item.startDate && dateStr <= item.endDate;
+                }
+                return item.date === dateStr;
+            });
+        }
+
+        function getItemStatus(item) {
+            const today = new Date();
+            const itemDate = new Date((item.date || item.startDate) + 'T00:00:00');
+            
+            if (item.completed) return 'completed';
+            if (itemDate < today) return 'overdue';
+            return '';
+        }
+
+        function toggleComplete(id) {
+            const itemIndex = items.findIndex(item => item.id === id);
+            if (itemIndex !== -1) {
+                const item = items[itemIndex];
+                item.completed = true;
+                item.completedDate = new Date().toISOString();
+                
+                // Move to completed items
+                completedItems.push(item);
+                items.splice(itemIndex, 1);
+                
+                saveData();
+                render();
+                closeTimelineModal();
+            }
+        }
+
+        function uncompleteItem(id) {
+            const itemIndex = completedItems.findIndex(item => item.id === id);
+            if (itemIndex !== -1) {
+                const item = completedItems[itemIndex];
+                delete item.completed;
+                delete item.completedDate;
+                
+                // Move back to active items
+                items.push(item);
+                completedItems.splice(itemIndex, 1);
+                
+                saveData();
+                render();
+            }
+        }
+
+        function deleteCompletedItem(id) {
+            if (confirm('Are you sure you want to permanently delete this completed item?')) {
+                completedItems = completedItems.filter(item => item.id !== id);
+                saveData();
+                render();
+            }
+        }
+
+        function matchesSearchQuery(item) {
+            if (!searchQuery) return true;
+            
+            const query = searchQuery.toLowerCase();
+            return (
+                item.title.toLowerCase().includes(query) ||
+                (item.notes && item.notes.toLowerCase().includes(query)) ||
+                item.category.toLowerCase().includes(query)
+            );
+        }
+
+        function handleSearch() {
+            searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+            
+            // Add search-active class to container for filtering
+            const container = document.querySelector('.container');
+            if (searchQuery) {
+                container.classList.add('search-active');
+            } else {
+                container.classList.remove('search-active');
+            }
+            
+            render();
+        }
+
+        function formatDateISO(date) {
+            return date.toISOString().split('T')[0];
+        }
+
+        function formatDateDisplay(dateStr) {
+            const date = new Date(dateStr + 'T00:00:00');
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        }
+
+        function formatTime(timeStr) {
+            if (!timeStr) return '';
+            const [hours, minutes] = timeStr.split(':');
+            const hour = parseInt(hours);
+            const ampm = hour >= 12 ? 'PM' : 'AM';
+            const displayHour = hour % 12 || 12;
+            return `${displayHour}:${minutes} ${ampm}`;
+        }
+
+        function openAddModal() {
+            document.getElementById('modalTitle').textContent = 'Add New Item';
+            document.getElementById('itemForm').reset();
+            document.getElementById('itemId').value = '';
+            toggleDateFields();
+            document.getElementById('itemModal').style.display = 'flex';
+        }
+
+        function openAddModalForDate(dateStr) {
+            document.getElementById('modalTitle').textContent = 'Add New Item';
+            document.getElementById('itemForm').reset();
+            document.getElementById('itemId').value = '';
+            document.getElementById('itemDate').value = dateStr;
+            toggleDateFields();
+            document.getElementById('itemModal').style.display = 'flex';
+        }
+
+        function editItem(id) {
+            const item = items.find(i => i.id === id);
+            if (!item) return;
+
+            document.getElementById('modalTitle').textContent = 'Edit Item';
+            document.getElementById('itemId').value = item.id;
+            document.getElementById('itemTitle').value = item.title;
+            document.getElementById('itemCategory').value = item.category;
+            document.getElementById('itemNotes').value = item.notes || '';
+            
+            if (item.category === 'trips') {
+                document.getElementById('itemStartDate').value = item.startDate;
+                document.getElementById('itemEndDate').value = item.endDate;
+            } else {
+                document.getElementById('itemDate').value = item.date;
+                document.getElementById('itemTime').value = item.time || '';
+            }
+            
+            toggleDateFields();
+            document.getElementById('itemModal').style.display = 'flex';
+        }
+
+        function deleteItem(id) {
+            if (confirm('Are you sure you want to delete this item?')) {
+                items = items.filter(item => item.id !== id);
+                saveData();
+                render();
+                closeTimelineModal();
+            }
+        }
+
+        function toggleDateFields() {
+            const category = document.getElementById('itemCategory').value;
+            const singleDate = document.getElementById('singleDateGroup');
+            const dateRange = document.getElementById('dateRangeGroup');
+            const timeGroup = document.getElementById('timeGroup');
+            
+            if (category === 'trips') {
+                singleDate.classList.add('hidden');
+                dateRange.classList.remove('hidden');
+                timeGroup.classList.add('hidden');
+            } else {
+                singleDate.classList.remove('hidden');
+                dateRange.classList.add('hidden');
+                timeGroup.classList.remove('hidden');
+            }
+        }
+
+        function saveItem() {
+            const id = document.getElementById('itemId').value;
+            const title = document.getElementById('itemTitle').value.trim();
+            const category = document.getElementById('itemCategory').value;
+            const notes = document.getElementById('itemNotes').value.trim();
+            
+            if (!title) {
+                alert('Please enter a title.');
+                return;
+            }
+            
+            const item = {
+                id: id ? parseInt(id) : Date.now(),
+                title,
+                category,
+                notes
+            };
+            
+            if (category === 'trips') {
+                const startDate = document.getElementById('itemStartDate').value;
+                const endDate = document.getElementById('itemEndDate').value;
+                
+                if (!startDate || !endDate) {
+                    alert('Please enter both start and end dates for trips.');
+                    return;
+                }
+                
+                item.startDate = startDate;
+                item.endDate = endDate;
+            } else {
+                const date = document.getElementById('itemDate').value;
+                
+                if (!date) {
+                    alert('Please enter a date.');
+                    return;
+                }
+                
+                item.date = date;
+                item.time = document.getElementById('itemTime').value;
+            }
+            
+            if (id) {
+                const index = items.findIndex(i => i.id == id);
+                if (index !== -1) items[index] = item;
+            } else {
+                items.push(item);
+            }
+            
+            saveData();
+            closeModal();
+            render();
+            
+            // If we were adding from timeline, refresh it
+            if (selectedDate) {
+                showDayTimeline(selectedDate);
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('itemModal').style.display = 'none';
+        }
+
+        function exportData() {
+            const dataStr = JSON.stringify({ 
+                active: items,
+                completed: completedItems 
+            }, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `phillips4cast-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            
+            URL.revokeObjectURL(url);
+        }
+
+        function importData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (confirm('This will replace all your current data. Continue?')) {
+                        items = data.active || data || [];
+                        completedItems = data.completed || [];
+                        saveData();
+                        render();
+                    }
+                } catch (error) {
+                    alert('Error importing data. Please check the file format.');
+                }
+                event.target.value = '';
+            };
+            reader.readAsText(file);
+        }
+
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.background = type === 'error' 
+                ? 'linear-gradient(135deg, #ff6b35, #ff4444)' 
+                : 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))';
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
